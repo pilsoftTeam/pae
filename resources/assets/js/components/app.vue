@@ -5,9 +5,14 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <ul class="nav nav-tabs" role="tablist">
-                        <li class="active"><a href="#tab1" role="tab" data-toggle="tab">Checklists</a></li>
-                        <li><a href="#tab2" role="tab" data-toggle="tab">Tab2</a></li>
-                        <li><a href="#tab3" role="tab" data-toggle="tab">Tab3</a></li>
+                        <li class="active">
+                            <a href="#tab1" role="tab" data-toggle="tab">Checklists</a>
+                        </li>
+                        <li>
+                            <a href="#tab2" role="tab" data-toggle="tab">Tab2</a>
+                        </li>
+                        <li>
+                            <a href="#tab3" role="tab" data-toggle="tab">Tab3</a></li>
                     </ul>
                     <!-- TAB CONTENT -->
                     <div class="tab-content">
@@ -44,7 +49,7 @@
     }
 </style>
 <script>
-    import checkListIndex from './admin/checklists/index.vue'
+    import checkListIndex from './admin/modulos/checklist/checklist.vue'
     export default {
         mounted() {
 

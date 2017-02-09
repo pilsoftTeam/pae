@@ -28,27 +28,15 @@
                 <div class="row">
                     <h4 class="text-center">Etapas</h4>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <ul class="list-group" v-for="(etapas, index) in items.stages">
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                                        <p>Etapa : {{etapas.stage}}<br>
-                                        <p>Item : {{etapas.name}}</p>
-                                    </div>
-                                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                        <button class="btn pull-right btn-danger"
-                                                title="Eliminar esta etapa"
-                                                @click="deleteStage(etapas.id)">
-                                            <i class="fa fa-remove"></i>
-                                        </button>
-                                        <button class="btn pull-right" @click="sendToPreguntas(etapas)"
-                                                title="Enviar a preguntas">
-                                            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                                        </button>
-                                    </div>
-                                </div>
 
+                        <ul class="list-group" v-for="etapas in items.stages">
+                            <li class="list-group-item">
+                                {{etapas.name}}
                             </li>
+                            <ul class="list-group" style="margin-left: 5%">
+                                <li class="list-group-item">{{etapas.stage}}</li>
+                            </ul>
+
                         </ul>
                     </div>
                 </div>
@@ -61,7 +49,9 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <h4>Etapa : {{preguntas.stageName}}<br>
                             <span>
-                               <small>Item :{{preguntas.item}}</small>
+                                <p>
+                                    Item : {{preguntas.item}}
+                                </p>
                             </span>
                         </h4>
                         <br>

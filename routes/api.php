@@ -19,6 +19,15 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     route::get('/get/checkLists', 'ChecklistController@index');
     route::post('/crear/checkList', 'ChecklistController@create');
+
+    //Items
+    Route::get('/get/items/{id}', 'ItemsController@show');
+    Route::post('/agregar/item', 'ItemsController@create');
+
+    //Etapas
+    Route::get('/get/etapas/{id}', 'EtapasController@show');
+    route::post('/agregar/etapa', 'EtapasController@create');
+
 });
 
 

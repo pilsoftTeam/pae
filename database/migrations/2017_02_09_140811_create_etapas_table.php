@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateElementsTable extends Migration
+class CreateEtapasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateElementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('elements', function (Blueprint $table) {
+        Schema::create('etapas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombreElemento');
+            $table->unsignedInteger('idItem');
+            $table->foreign('idItem')->references('id')->on('items');
+            $table->string('nombreEtapa');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateElementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('elements');
+        Schema::dropIfExists('etapas');
     }
 }
