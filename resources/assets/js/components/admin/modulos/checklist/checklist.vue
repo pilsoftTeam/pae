@@ -1,6 +1,13 @@
 <template>
     <div>
-        <div class="row">
+        <div class="row" v-if="!showInit" @click="showInit = true">
+            <button class="btn btn-xs btn-block btn-success">
+                <i class="fa fa-arrow-circle-left"></i>
+            </button>
+            <hr>
+        </div>
+
+        <div class="row" v-if="showInit">
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -22,6 +29,10 @@
 
                     </div>
                 </div>
+                <div class="btn-group footer">
+                    <button type="button" class="btn btn-default" @click="openCreationModal">Crear un nuevo checklist
+                    </button>
+                </div>
             </div>
             <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                 <div class="panel panel-default">
@@ -29,9 +40,9 @@
 
                         <h5>Checklist : {{clickedChecklist.nombreChecklist}}</h5>
                         <hr>
-                        <p>Items : </p>
+                        <h4>Items : </h4>
+                        <br>
                         <!--
-
                         <div class="tree">
                             <ul v-for="item in items">
                                 <li>
@@ -59,67 +70,38 @@
                                 </li>
                             </ul>
                         </div>
-
                         -->
 
 
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-
-                                <div class="panel-group" id="accordion" v-for="item in items">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse"
-                                                   data-parent="#accordion"
-                                                   href="#collapse1">
-                                                    {{item.nombreItem}}
-                                                </a>
-
-                                                <button class="pull-right btn btn-info btn-sm alignedButton">
-                                                    Crear pregunta
-                                                </button>
-                                                <button class="pull-right btn btn-primary btn-sm alignedButton"
-                                                        @click="showSubEtapaModal(item)">Crear etapa
-                                                </button>
-                                            </h4>
-                                        </div>
-                                        <div id="collapse1" class="panel-collapse collapse in">
-                                            <div class="panel-body">
-                                                <div v-for="etapas in item.get_etapas">
-
-                                                    
-                                                    <p>{{etapas.nombreEtapa}}</p>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
+                        <div class="row" v-for="item in items">
+                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                {{item.nombreItem}}
                             </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <button
+                                        class="btn btn-success text-center center-block pull-right"
+                                        @click="change(item)">
+                                    Editar este item
+                                </button>
+                            </div>
+                            <hr>
+                            <hr>
                         </div>
 
 
                         <div class="btn-group footer pull-left">
                             <button type="button" class="btn btn-default" @click="showCrearItem">Crear Item</button>
-                            <button type="button" class="btn btn-default" @click="showCrearEtapas">Crear Etapa</button>
-                            <button type="button" class="btn btn-default" @click="showCrearPreguntas">Crear Pregunta
-                            </button>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
 
-        <div class="btn-group footer">
-            <button type="button" class="btn btn-default" @click="openCreationModal">Crear un nuevo checklist</button>
+        <div v-if="!showInit">
+            <items-component :itemFromParent="selectedItem" :items="items"></items-component>
         </div>
-
 
         <div class="modal fade" id="agregarChecklist">
             <div class="modal-dialog">
@@ -229,8 +211,6 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-
-
         <div class="modal fade" id="subCrearEtapas">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -273,8 +253,18 @@
         margin-top: -.5%;
     }
 
+    .roundedBorder {
+        border-radius: 10px 0px 10px 10px;
+        -moz-border-radius: 10px 0px 10px 10px;
+        -webkit-border-radius: 10px 0px 10px 10px;
+        border: 1px solid lightgrey;
+        margin: 1%;
+        padding-bottom: 1%;
+    }
+
 </style>
 <script>
+    import items from './items.vue'
     export default {
         mounted(){
 
@@ -287,8 +277,10 @@
                 nombreChecklist: '',
                 clickedChecklist: '',
                 selectedChecklistConditional: false,
+                showInit: true,
                 etapas: '',
                 items: '',
+                selectedItem: '',
                 item: {
                     idChecklist: '',
                     nombreItem: '',
@@ -383,6 +375,15 @@
                 })
 
             },
+
+            change(item){
+                this.selectedItem = item;
+                this.showInit = false;
+            }
+        },
+
+        components: {
+            'items-component': items
         }
     }
 </script>

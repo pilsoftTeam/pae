@@ -9,7 +9,7 @@
                             <a href="#tab1" role="tab" data-toggle="tab">Checklists</a>
                         </li>
                         <li>
-                            <a href="#tab2" role="tab" data-toggle="tab">Tab2</a>
+                            <a href="#tab2" role="tab" data-toggle="tab">Usuarios</a>
                         </li>
                         <li>
                             <a href="#tab3" role="tab" data-toggle="tab">Tab3</a></li>
@@ -20,8 +20,7 @@
                             <checklist-index-component></checklist-index-component>
                         </div>
                         <div class="tab-pane fade" id="tab2">
-                            <h2>Tab2</h2>
-                            <p>Lorem ipsum.</p>
+                            <users-component></users-component>
                         </div>
                         <div class="tab-pane fade" id="tab3">
                             <h2>Tab3</h2>
@@ -50,6 +49,7 @@
 </style>
 <script>
     import checkListIndex from './admin/modulos/checklist/checklist.vue'
+    import usersIndex from './admin/modulos/users/users.vue'
     export default {
         mounted() {
 
@@ -73,7 +73,8 @@
             }
         },
         components: {
-            'checklist-index-component': checkListIndex
+            'checklist-index-component': checkListIndex,
+            'users-component': usersIndex
         }
     }
 </script>

@@ -16,6 +16,13 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+    //Usuarios
+    Route::get('/get/users', 'UsersController@index');
+    Route::post('/add/user', 'UsersController@create');
+
+    //Roles
+    Route::get('/get/roles', 'RolesController@index');
+
 
     route::get('/get/checkLists', 'ChecklistController@index');
     route::post('/crear/checkList', 'ChecklistController@create');
