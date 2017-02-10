@@ -17,7 +17,7 @@ class CreateEtapasTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('idItem');
             $table->foreign('idItem')->references('id')->on('items');
-            $table->string('nombreEtapa');
+            $table->string('nombreAgrupacion');
             $table->timestamps();
         });
     }

@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     //Roles
     Route::get('/get/roles', 'RolesController@index');
 
-
+    //Checklist
     route::get('/get/checkLists', 'ChecklistController@index');
     route::post('/crear/checkList', 'ChecklistController@create');
 
@@ -31,9 +31,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/get/items/{id}', 'ItemsController@show');
     Route::post('/agregar/item', 'ItemsController@create');
 
-    //Etapas
-    Route::get('/get/etapas/{id}', 'EtapasController@show');
-    route::post('/agregar/etapa', 'EtapasController@create');
+    //Agrupaciones
+    Route::post('/save/agrupacion', 'AgrupacionController@create');
+    Route::get('/get/agrupaciones', 'AgrupacionController@index');
 
 });
 

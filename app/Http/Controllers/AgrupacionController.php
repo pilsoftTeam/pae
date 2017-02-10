@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Etapas;
 use Illuminate\Http\Request;
 
-class EtapasController extends Controller
+class AgrupacionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,10 @@ class EtapasController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $asignaciones = Etapas::all();
 
+        return response()->json($asignaciones);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -26,11 +27,10 @@ class EtapasController extends Controller
      */
     public function create(Request $request)
     {
-        $etapa = new Etapas();
-        $etapa->idItem = $request->idItem;
-        $etapa->nombreEtapa = $request->nombreEtapa;
-        $etapa->save();
-
+        $asignaciones = new Etapas();
+        $asignaciones->idItem = $request->idItem;
+        $asignaciones->nombreAgrupacion = $request->nombreAgrupacion;
+        $asignaciones->save();
         return response()->json(200);
     }
 
@@ -53,9 +53,7 @@ class EtapasController extends Controller
      */
     public function show($id)
     {
-        $etapa = Etapas::where('idChecklist', $id)->get();
-
-        return response()->json($etapa);
+        //
     }
 
     /**
