@@ -244,8 +244,11 @@
 
                                                                         <p>Documentos verificadores</p>
                                                                         <ul class="list-group">
-                                                                        	<li class="list-group-item">
-                                                                                {{}}
+                                                                            <li class="list-group-item">
+                                                                                <label class="label label-default"
+                                                                                       v-for="item in evaluacion.documentosVerificadores.split(',')">
+                                                                                    {{item}}
+                                                                                </label>
                                                                             </li>
                                                                         </ul>
                                                                     </div>

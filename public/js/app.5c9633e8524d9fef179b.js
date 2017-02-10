@@ -13100,6 +13100,9 @@ module.exports = function spread(callback) {
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     mounted: function mounted() {
@@ -33436,7 +33439,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-xs-6 col-sm-6 col-md-6 col-lg-6"
   }, [_c('h5', [_c('b', [_vm._v(_vm._s(_vm.evaluacion.nombreEvaluacion))])])]), _vm._v(" "), _c('div', {
     staticClass: "col-xs-6 col-sm-6 col-md-6 col-lg-6"
-  }, [(_vm.evaluacion.tipo === 'texto') ? _c('div', [_vm._m(5)]) : _vm._e(), _vm._v(" "), (_vm.evaluacion.tipo === 'numero') ? _c('div', [_vm._m(6)]) : _vm._e(), _vm._v(" "), (_vm.evaluacion.tipo === 'fecha') ? _c('div', [_vm._m(7)]) : _vm._e(), _vm._v(" "), (_vm.evaluacion.tipo === 'seleccionUnica') ? _c('div', [_vm._m(8)]) : _vm._e(), _vm._v(" "), (_vm.evaluacion.tipo === 'seleccionMultiple') ? _c('div', [_vm._m(9)]) : _vm._e()])]), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._m(10)])])])]), _vm._v(" "), _c('div', {
+  }, [(_vm.evaluacion.tipo === 'texto') ? _c('div', [_vm._m(5)]) : _vm._e(), _vm._v(" "), (_vm.evaluacion.tipo === 'numero') ? _c('div', [_vm._m(6)]) : _vm._e(), _vm._v(" "), (_vm.evaluacion.tipo === 'fecha') ? _c('div', [_vm._m(7)]) : _vm._e(), _vm._v(" "), (_vm.evaluacion.tipo === 'seleccionUnica') ? _c('div', [_vm._m(8)]) : _vm._e(), _vm._v(" "), (_vm.evaluacion.tipo === 'seleccionMultiple') ? _c('div', [_vm._m(9)]) : _vm._e()])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "panel-group"
+  }, [_c('div', {
+    staticClass: "panel panel-default"
+  }, [_vm._m(10), _vm._v(" "), _c('div', {
+    staticClass: "panel-collapse collapse",
+    attrs: {
+      "id": "collapse1"
+    }
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-xs-12 col-sm-12 col-md-12 col-lg-12"
+  }, [_c('p', [_vm._v("Documentos verificadores")]), _vm._v(" "), _c('ul', {
+    staticClass: "list-group"
+  }, [_c('li', {
+    staticClass: "list-group-item"
+  }, _vm._l((_vm.evaluacion.documentosVerificadores.split(',')), function(item) {
+    return _c('label', {
+      staticClass: "label label-default"
+    }, [_vm._v("\n                                                                                " + _vm._s(item) + "\n                                                                            ")])
+  }))])])])])])])])])])])]), _vm._v(" "), _c('div', {
     staticClass: "btn-group  text-center center-block"
   }, [_c('button', {
     staticClass: "btn btn-default col-xs-2 col-sm-2 col-md-2 col-lg-2",
@@ -33638,10 +33664,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v(" -- Select One --")])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "panel-group"
-  }, [_c('div', {
-    staticClass: "panel panel-default"
-  }, [_c('div', {
     staticClass: "panel-heading"
   }, [_c('h4', {
     staticClass: "panel-title"
@@ -33650,22 +33672,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data-toggle": "collapse",
       "href": "#collapse1"
     }
-  }, [_vm._v("\n                                                                Mas informacion\n                                                            ")])])]), _vm._v(" "), _c('div', {
-    staticClass: "panel-collapse collapse",
-    attrs: {
-      "id": "collapse1"
-    }
-  }, [_c('div', {
-    staticClass: "panel-body"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-xs-12 col-sm-12 col-md-12 col-lg-12"
-  }, [_c('p', [_vm._v("Documentos verificadores")]), _vm._v(" "), _c('ul', {
-    staticClass: "list-group"
-  }, [_c('li', {
-    staticClass: "list-group-item"
-  }, [_vm._v("\n                                                                            {{}}\n                                                                        ")])])])])])])])])
+  }, [_vm._v("\n                                                                Mas informacion\n                                                            ")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "modal-footer"
