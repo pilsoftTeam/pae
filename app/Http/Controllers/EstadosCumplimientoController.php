@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Etapas;
+use App\EstadosCumplimiento;
 use Illuminate\Http\Request;
 
-class AgrupacionController extends Controller
+class EstadosCumplimientoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,24 +14,18 @@ class AgrupacionController extends Controller
      */
     public function index()
     {
-        $asignaciones = Etapas::all();
-
-        return response()->json($asignaciones);
+        $estados = EstadosCumplimiento::all();
+        return response()->json($estados, 200);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $asignaciones = new Etapas();
-        $asignaciones->idItem = $request->idItem;
-        $asignaciones->nombreAgrupacion = $request->nombreAgrupacion;
-        $asignaciones->save();
-        return response()->json(200);
+        //
     }
 
     /**
@@ -53,8 +47,7 @@ class AgrupacionController extends Controller
      */
     public function show($id)
     {
-        $agrupacion = Etapas::where('idItem', $id)->get();
-        return response()->json($agrupacion);
+        //
     }
 
     /**

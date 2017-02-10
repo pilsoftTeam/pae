@@ -33,7 +33,10 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     //Agrupaciones
     Route::post('/save/agrupacion', 'AgrupacionController@create');
-    Route::get('/get/agrupaciones', 'AgrupacionController@index');
+    Route::get('/get/agrupaciones/{id}', 'AgrupacionController@show');
+
+    //Opciones cumplimiento
+    Route::get('/get/opciones/cumplimiento', 'EstadosCumplimientoController@index');
 
 });
 
