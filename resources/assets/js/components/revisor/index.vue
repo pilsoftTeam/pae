@@ -47,7 +47,7 @@
 </template>
 
 <script>
-    import revision from './modulos/revision.vue'
+    import revision from './modulos/revisionex.vue'
     export default {
         mounted() {
             this.getAsignaciones();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Asignaciones;
+use App\Checklist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -84,5 +85,12 @@ class RevisorController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function endChecklist()
+    {
+        Asignaciones::where('idRevisor', Auth::user()->id)->update([
+            'estado' => 'revisado'
+        ]);
     }
 }

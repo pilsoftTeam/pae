@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/get/items/{id}', 'ItemsController@show');
     Route::post('/agregar/item', 'ItemsController@create');
 
-    //Agrupaciones
+    //AgrupacionesendChecklist
     Route::post('/save/agrupacion', 'AgrupacionController@create');
     Route::get('/get/agrupaciones/{id}', 'AgrupacionController@show');
 
@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/designar/checklist', 'SupervisorController@create');
     //Revisor
     Route::get('/get/asignaciones', 'RevisorController@index');
+    Route::post('/end/checklist', 'RevisorController@');
 
 });
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Asignaciones;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SupervisorController extends Controller
 {
@@ -27,13 +28,18 @@ class SupervisorController extends Controller
     {
         $asignacion = new Asignaciones();
         $asignacion->idChecklist = $request->idChecklist;
+        $asignacion->idDesignador = Auth::user()->id;
         $asignacion->idRevisor = $request->idRevisor;
         $asignacion->idBodega = $request->idBodega;
-        $asignacion->estado = 'pendiente';
+        $asignacion->estado = 'asignado';
         $asignacion->save();
+
+
 
         return response()->json(200);
     }
+
+
 
     /**
      * Store a newly created resource in storage.

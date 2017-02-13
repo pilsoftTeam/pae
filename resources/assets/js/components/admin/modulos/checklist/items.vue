@@ -167,8 +167,8 @@
                                                            class="form-control">
                                                 </div>
                                                 <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                    <label class="control-label">Aspecto</label>
-                                                    <textarea v-model="evaluacion.aspecto"
+                                                    <label class="control-label">Aspecto Evaluativo</label>
+                                                    <textarea v-model="evaluacion.aspectoEvaluativo"
                                                               placeholder="Escriba el aspecto evaluativo de esta evaluacion *Opcional*"
                                                               class="form-control"></textarea>
                                                 </div>
