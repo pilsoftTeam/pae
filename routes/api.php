@@ -18,6 +18,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     });
     //Usuarios
     Route::get('/get/users', 'UsersController@index');
+    Route::get('/get/users/revisores', 'UsersController@getRevisores');
     Route::post('/add/user', 'UsersController@create');
 
     //Roles
@@ -25,6 +26,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     //Checklist
     route::get('/get/checkLists', 'ChecklistController@index');
+    route::get('/get/checklist/{id}', 'ChecklistController@show');
     route::post('/crear/checkList', 'ChecklistController@create');
 
     //Items
@@ -37,6 +39,18 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     //Opciones cumplimiento
     Route::get('/get/opciones/cumplimiento', 'EstadosCumplimientoController@index');
+
+    //Evaluaciones
+
+    Route::get('/get/evaluaciones/{id}', 'EvaluacionesController@show');
+    Route::post('/save/evaluacion', 'EvaluacionesController@create');
+
+    //Bodegas
+    Route::get('/bodegas/all', 'BodegasController@index');
+    //supervisor
+    Route::post('/designar/checklist', 'SupervisorController@create');
+    //Revisor
+    Route::get('/get/asignaciones', 'RevisorController@index');
 
 });
 

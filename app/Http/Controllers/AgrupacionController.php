@@ -53,7 +53,7 @@ class AgrupacionController extends Controller
      */
     public function show($id)
     {
-        $agrupacion = Etapas::where('idItem', $id)->get();
+        $agrupacion = Etapas::where('idItem', $id)->with('getEvaluaciones')->get();
         return response()->json($agrupacion);
     }
 

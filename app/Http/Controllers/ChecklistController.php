@@ -51,7 +51,9 @@ class ChecklistController extends Controller
      */
     public function show($id)
     {
-        //
+        $checklist = Checklist::where('id', $id)->with('getItems')->get();
+
+        return response()->json($checklist, 200);
     }
 
     /**

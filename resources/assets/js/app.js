@@ -13,6 +13,8 @@ require('./bootstrap');
  */
 
 Vue.component('app', require('./components/app.vue'));
+Vue.component('super', require('./components/super/index.vue'));
+Vue.component('revisor', require('./components/revisor/index.vue'));
 
 const app = new Vue({
     el: '#app'

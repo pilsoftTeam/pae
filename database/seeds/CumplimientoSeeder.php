@@ -15,12 +15,12 @@ class CumplimientoSeeder extends Seeder
 
 
         DB::table('estados_cumplimientos')->insert([
-            'nombreCumplimiento' => 'Opcion uno',
-            'contenido' => 'C, NC, NA, NV'
+            'nombreCumplimiento' => 'Cumple - No Cumple - No Aplica - No Verificable',
+            'contenido' => 'C,NC,NA,NV'
         ]);
         DB::table('estados_cumplimientos')->insert([
-            'nombreCumplimiento' => 'Opcion dos',
-            'contenido' => 'A, NA'
+            'nombreCumplimiento' => 'Aprueba - No Aprueba',
+            'contenido' => 'A,Na'
         ]);
     }
 }

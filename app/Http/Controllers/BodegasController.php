@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Perfilamiento;
-use App\User;
+use App\Bodegas;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class BodegasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,39 +14,18 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = Perfilamiento::where('idPerfil', '!=', 1)->with('getUsers')->get();
-        return response()->json($users, 200);
+        $bodegas = Bodegas::all();
+        return response()->json($bodegas);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $pass = bcrypt(str_random(12));
-        $user = new User();
-        $perfilamiento = new Perfilamiento();
-
-        $user->name = $request->nombre;
-        $user->email = $request->email;
-        $user->password = $pass;
-        $user->save();
-
-        $perfilamiento->idPerfil = $request->idRol;
-        $perfilamiento->idUsuario = $user->id;
-        $perfilamiento->save();
-
-
-        return response()->json(200);
-    }
-
-    public function getRevisores()
-    {
-        $revisores = Perfilamiento::where('idPerfil', 3)->with('getUsers')->get();
-        return response()->json($revisores);
+        //
     }
 
     /**

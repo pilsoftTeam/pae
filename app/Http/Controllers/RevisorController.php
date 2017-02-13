@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Perfilamiento;
-use App\User;
+use App\Asignaciones;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class UsersController extends Controller
+class RevisorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,39 +15,19 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = Perfilamiento::where('idPerfil', '!=', 1)->with('getUsers')->get();
-        return response()->json($users, 200);
+        $asignaciones = Asignaciones::where('idRevisor', Auth::user()->id)
+            ->with('getChecklistName', 'getBodegaInfo')->get();
+        return response()->json($asignaciones, 200);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $pass = bcrypt(str_random(12));
-        $user = new User();
-        $perfilamiento = new Perfilamiento();
-
-        $user->name = $request->nombre;
-        $user->email = $request->email;
-        $user->password = $pass;
-        $user->save();
-
-        $perfilamiento->idPerfil = $request->idRol;
-        $perfilamiento->idUsuario = $user->id;
-        $perfilamiento->save();
-
-
-        return response()->json(200);
-    }
-
-    public function getRevisores()
-    {
-        $revisores = Perfilamiento::where('idPerfil', 3)->with('getUsers')->get();
-        return response()->json($revisores);
+        //
     }
 
     /**
