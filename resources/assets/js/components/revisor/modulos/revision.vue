@@ -1,128 +1,59 @@
 <template>
     <div>
-        <div class="container">
-            <div v-for="element in checklist">
-                <div class="row" v-for="items in element.get_items">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h4 class="text-center">
-                            <b>Item : {{items.nombreItem}}</b>
-                        </h4>
+        <div class="row">
+            <h5 class="text-center">
+                <b>{{revision.get_checklist_name[0].nombreChecklist}}</b>
+            </h5>
+            <hr>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                    <div class="col-xs-18 col-sm-4 col-md-4 col-lg-4">
                         <div class="panel panel-default">
+                            <h4 class="text-center">
+                                <b>Items</b>
+                            </h4>
                             <div class="panel-body">
-                                <div v-if="items.get_evaluaciones.length > 0">
-                                    <div class="panel panel-default">
-                                        <div class="panel-body">
-                                            <div class="form-group"
-                                                 v-for="evaluaciones in items.get_evaluaciones">
-                                                <label class="control-label">{{evaluaciones.nombreEvaluacion}}</label>
-
-                                                <div v-if="evaluaciones.tipo === 'texto'">
-                                                    <input type="text"
-                                                           name="name"
-                                                           class="form-control">
-                                                </div>
-                                                <div v-if="evaluaciones.tipo === 'numero'">
-                                                    <input type="number"
-                                                           name="name"
-                                                           class="form-control">
-                                                </div>
-                                                <div v-if="evaluaciones.tipo === 'fecha'">
-                                                    <input type="number"
-                                                           name="name"
-                                                           class="form-control">
-                                                </div>
-                                                <div v-if="evaluaciones.tipo === 'seleccionUnica'">
-                                                    <select class="form-control"
-                                                            v-for="opciones in evaluaciones.get_opciones">
-                                                        <option v-for="opt in opciones.contenido.split(',')"
-                                                                :value="opt">
-                                                            {{opt === 'C' ? 'Cumple': ''}}
-                                                            {{opt === 'NC' ? 'No Cumple': ''}}
-                                                            {{opt === 'NA' ? 'No Aplica': ''}}
-                                                            {{opt === 'NV' ? 'No Verificable': ''}}
-                                                            {{opt === 'A' ? 'Aprueba': ''}}
-                                                            {{opt === 'Na' ? 'No Aprueba': ''}}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div v-if="evaluaciones.tipo === 'seleccionMultiple'">
-                                                    <select class="form-control" multiple>
-                                                        <option value=""> -- Select One --</option>
-                                                    </select>
-                                                </div>
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item" v-for="item in items">
+                                        <div class="row">
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                                                <h5 class="list-group-item-heading">{{item.item}}</h5>
+                                            </div>
+                                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                                <button class="btn btn-sm btn-success pull-right"
+                                                        @click="showItem(item.id)">
+                                                    <i class="fa fa-arrow-circle-right"></i>
+                                                </button>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div v-if="items.get_agrupaciones.length > 0">
-                                    <div class="panel panel-primary" v-for="agrupacion in items.get_agrupaciones">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title">{{agrupacion.nombreAgrupacion}}</h3>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="form-group" v-for="evaluaciones in agrupacion.get_evaluaciones">
-                                                <label class="control-label">{{evaluaciones.nombreEvaluacion}}</label>
-                                                <div v-if="evaluaciones.tipo === 'texto'">
-                                                    <input type="text"
-                                                           name="name"
-                                                           class="form-control">
-                                                </div>
-                                                <div v-if="evaluaciones.tipo === 'numero'">
-                                                    <input type="number"
-                                                           name="name"
-                                                           class="form-control">
-                                                </div>
-                                                <div v-if="evaluaciones.tipo === 'fecha'">
-                                                    <input type="number"
-                                                           name="name"
-                                                           class="form-control">
-                                                </div>
-                                                <div v-if="evaluaciones.tipo === 'seleccionUnica'">
-                                                    <select class="form-control"
-                                                            v-for="opciones in evaluaciones.get_opciones">
-                                                        <option v-for="opt in opciones.contenido.split(',')"
-                                                                :value="opt">
-                                                            {{opt === 'C' ? 'Cumple': ''}}
-                                                            {{opt === 'NC' ? 'No Cumple': ''}}
-                                                            {{opt === 'NA' ? 'No Aplica': ''}}
-                                                            {{opt === 'NV' ? 'No Verificable': ''}}
-                                                            {{opt === 'A' ? 'Aprueba': ''}}
-                                                            {{opt === 'Na' ? 'No Aprueba': ''}}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div v-if="evaluaciones.tipo === 'seleccionMultiple'">
-                                                    <select class="form-control" multiple>
-                                                        <option value=""> -- Select One --</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
+                                        <br>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-
-
+                    </div>
+                    <div class="col-xs-18 col-sm-8 col-md-8 col-lg-8">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti dicta dignissimos
+                                earum
+                                eos minima minus officia quidem vel! Accusantium deserunt ducimus facilis impedit magni
+                                numquam recusandae suscipit ullam! Incidunt, perspiciatis!
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
-            <button class="btn btn-success pull-right">
-                Terminar
-            </button>
         </div>
-
-
     </div>
 </template>
 
 <script>
-    import _ from 'lodash'
     export default {
         mounted() {
-            this.getChecklist()
+            this.getChecklist();
         },
         props: {
             revision: Object
@@ -130,30 +61,34 @@
 
         data(){
             return {
-                checklist: '',
-                opcionesEvaluacion: '',
-                evaluaciones: []
+
+                items: []
             }
         },
 
         methods: {
-
             getChecklist(){
                 axios.get('api/get/checklist/' + this.revision.id).then(r => {
-                    this.checklist = r.data;
-
-                    let evaluacion = {};
+                    //this.checklist = r.data;
+                    let self = this;
 
 
                     _.forEach(r.data, i => {
-
-                        console.log(i.get_items)
+                        _.forEach(i.get_items, a => {
+                            let item = {
+                                id: a.id,
+                                item: a.nombreItem
+                            };
+                            self.items.push(item);
+                        })
                     })
-
-
                 }).catch(e => {
                     console.log(e)
                 })
+            },
+
+            showItem(id){
+                console.log(id);
             }
         },
         computed: {},
