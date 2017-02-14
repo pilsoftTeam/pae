@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::get('/get/evaluaciones/{id}', 'EvaluacionesController@show');
     Route::post('/save/evaluacion', 'EvaluacionesController@create');
+    Route::post('/get/files', 'EvaluacionesController@files');
 
     //Bodegas
     Route::get('/bodegas/all', 'BodegasController@index');

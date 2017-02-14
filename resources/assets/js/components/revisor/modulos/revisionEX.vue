@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container">
-            <div class="col-xs-18 col-sm-4 col-md-4 col-lg-4">
+            <div class="col-xs-18 col-sm-3 col-md-3 col-lg-3">
                 <div class="panel panel-default">
                     <h4 class="text-center">
                         <b>Items</b>
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            <div class="col-xs-18 col-sm-9 col-md-9 col-lg-9">
                 <div v-for="element in checklist">
                     <div class="row" v-for="(items ,key) in element.get_items">
                         <div v-if="key == showItems">
@@ -42,7 +42,18 @@
                                                 <div class="panel-body">
                                                     <div class="form-group"
                                                          v-for="evaluaciones in items.get_evaluaciones">
-                                                        <label class="control-label">{{evaluaciones.nombreEvaluacion}}</label>
+                                                        <div class="row">
+                                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                                <label class="control-label">{{evaluaciones.nombreEvaluacion}}</label>
+                                                            </div>
+                                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"
+                                                                 v-if="evaluaciones.criticidad">
+                                                                <h5 class="text-center">
+                                                                    Criticidad : <b>{{evaluaciones.criticidad}}</b>
+                                                                </h5>
+
+                                                            </div>
+                                                        </div>
 
                                                         <div v-if="evaluaciones.tipo === 'texto'">
                                                             <input type="text"
@@ -53,20 +64,80 @@
                                                             <div class="row"
                                                                  v-if="evaluaciones.observacionDocumental
                                                                  || evaluaciones.observacionEscrita == 1">
-                                                                <a data-toggle="collapse" data-parent="#accordion"
-                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/\s/g,''))">
-                                                                    Collapsible Group 1</a>
-                                                                <div :id="evaluaciones.nombreEvaluacion.replace(/\s/g,'')"
-                                                                     class="panel-collapse collapse in">
-                                                                    <div class="panel-body">Lorem ipsum dolor sit amet,
-                                                                        consectetur adipisicing elit,
-                                                                        sed do eiusmod tempor incididunt ut labore et
-                                                                        dolore magna aliqua. Ut enim ad
-                                                                        minim veniam, quis nostrud exercitation ullamco
-                                                                        laboris nisi ut aliquip ex ea
-                                                                        commodo consequat.
+                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                                    <div class="panel panel-warning">
+                                                                        <div class="panel-heading">
+                                                                            <h4 class="panel-title">
+                                                                                <a data-toggle="collapse"
+                                                                                   data-parent="#accordion"
+                                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
+                                                                                >Subir adjuntos / Aspectos evaluativos ,
+                                                                                    Documentos requeridos</a>
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div :id="evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_')"
+                                                                             class="panel-collapse collapse">
+                                                                            <div class="panel-body">
+
+
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <textarea
+                                                                                                    class="form-control"
+                                                                                                    v-model="evaluaciones.observacionEscritaValue"
+                                                                                            ></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <file-upload
+                                                                                                    :id="'myVueDropzone'+evaluaciones.id"
+                                                                                                    :thumbnailWidth="300"
+                                                                                                    :thumbnailHeight="100"
+                                                                                                    :maxFileSizeInMB="10"
+                                                                                                    :maxNumberOfFiles="99"
+                                                                                                    url="https://httpbin.org/post"
+                                                                                                    v-on:vdropzone-success="showSuccess"
+                                                                                                    :useFontAwesome="true">
+
+                                                                                            </file-upload>
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Aspectos evaluativos</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            {{evaluaciones.aspectoEvaluativo}}
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Documentos
+                                                                                                verificadores</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
+                                                                                                <li class="list-group-item">{{item}}</li>
+                                                                                            </span>
+                                                                                        </p>
+                                                                                    </div>
+
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
 
                                                             </div>
 
@@ -80,20 +151,80 @@
                                                             <div class="row"
                                                                  v-if="evaluaciones.observacionDocumental
                                                                  || evaluaciones.observacionEscrita == 1">
-                                                                <a data-toggle="collapse" data-parent="#accordion"
-                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/\s/g,''))">
-                                                                    Collapsible Group 1</a>
-                                                                <div :id="evaluaciones.nombreEvaluacion.replace(/\s/g,'')"
-                                                                     class="panel-collapse collapse in">
-                                                                    <div class="panel-body">Lorem ipsum dolor sit amet,
-                                                                        consectetur adipisicing elit,
-                                                                        sed do eiusmod tempor incididunt ut labore et
-                                                                        dolore magna aliqua. Ut enim ad
-                                                                        minim veniam, quis nostrud exercitation ullamco
-                                                                        laboris nisi ut aliquip ex ea
-                                                                        commodo consequat.
+                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                                    <div class="panel panel-warning">
+                                                                        <div class="panel-heading">
+                                                                            <h4 class="panel-title">
+                                                                                <a data-toggle="collapse"
+                                                                                   data-parent="#accordion"
+                                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
+                                                                                >Subir adjuntos / Aspectos evaluativos ,
+                                                                                    Documentos requeridos</a>
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div :id="evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_')"
+                                                                             class="panel-collapse collapse">
+                                                                            <div class="panel-body">
+
+
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <textarea
+                                                                                                    class="form-control"
+                                                                                                    v-model="evaluaciones.observacionEscritaValue"
+                                                                                            ></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <file-upload
+                                                                                                    :id="'myVueDropzone'+evaluaciones.id"
+                                                                                                    :thumbnailWidth="300"
+                                                                                                    :thumbnailHeight="100"
+                                                                                                    :maxFileSizeInMB="10"
+                                                                                                    :maxNumberOfFiles="99"
+                                                                                                    url="https://httpbin.org/post"
+                                                                                                    v-on:vdropzone-success="showSuccess"
+                                                                                                    :useFontAwesome="true">
+
+                                                                                            </file-upload>
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Aspectos evaluativos</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            {{evaluaciones.aspectoEvaluativo}}
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Documentos
+                                                                                                verificadores</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
+                                                                                                <li class="list-group-item">{{item}}</li>
+                                                                                            </span>
+                                                                                        </p>
+                                                                                    </div>
+
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
 
                                                             </div>
                                                         </div>
@@ -106,20 +237,80 @@
                                                             <div class="row"
                                                                  v-if="evaluaciones.observacionDocumental
                                                                  || evaluaciones.observacionEscrita == 1">
-                                                                <a data-toggle="collapse" data-parent="#accordion"
-                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/\s/g,''))">
-                                                                    Collapsible Group 1</a>
-                                                                <div :id="evaluaciones.nombreEvaluacion.replace(/\s/g,'')"
-                                                                     class="panel-collapse collapse in">
-                                                                    <div class="panel-body">Lorem ipsum dolor sit amet,
-                                                                        consectetur adipisicing elit,
-                                                                        sed do eiusmod tempor incididunt ut labore et
-                                                                        dolore magna aliqua. Ut enim ad
-                                                                        minim veniam, quis nostrud exercitation ullamco
-                                                                        laboris nisi ut aliquip ex ea
-                                                                        commodo consequat.
+                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                                    <div class="panel panel-warning">
+                                                                        <div class="panel-heading">
+                                                                            <h4 class="panel-title">
+                                                                                <a data-toggle="collapse"
+                                                                                   data-parent="#accordion"
+                                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
+                                                                                >Subir adjuntos / Aspectos evaluativos ,
+                                                                                    Documentos requeridos</a>
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div :id="evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_')"
+                                                                             class="panel-collapse collapse">
+                                                                            <div class="panel-body">
+
+
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <textarea
+                                                                                                    class="form-control"
+                                                                                                    v-model="evaluaciones.observacionEscritaValue"
+                                                                                            ></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <file-upload
+                                                                                                    :id="'myVueDropzone'+evaluaciones.id"
+                                                                                                    :thumbnailWidth="300"
+                                                                                                    :thumbnailHeight="100"
+                                                                                                    :maxFileSizeInMB="10"
+                                                                                                    :maxNumberOfFiles="99"
+                                                                                                    url="https://httpbin.org/post"
+                                                                                                    v-on:vdropzone-success="showSuccess"
+                                                                                                    :useFontAwesome="true">
+
+                                                                                            </file-upload>
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Aspectos evaluativos</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            {{evaluaciones.aspectoEvaluativo}}
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Documentos
+                                                                                                verificadores</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
+                                                                                                <li class="list-group-item">{{item}}</li>
+                                                                                            </span>
+                                                                                        </p>
+                                                                                    </div>
+
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
 
                                                             </div>
                                                         </div>
@@ -141,20 +332,80 @@
                                                             <div class="row"
                                                                  v-if="evaluaciones.observacionDocumental
                                                                  || evaluaciones.observacionEscrita == 1">
-                                                                <a data-toggle="collapse" data-parent="#accordion"
-                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/\s/g,''))">
-                                                                    Collapsible Group 1</a>
-                                                                <div :id="evaluaciones.nombreEvaluacion.replace(/\s/g,'')"
-                                                                     class="panel-collapse collapse in">
-                                                                    <div class="panel-body">Lorem ipsum dolor sit amet,
-                                                                        consectetur adipisicing elit,
-                                                                        sed do eiusmod tempor incididunt ut labore et
-                                                                        dolore magna aliqua. Ut enim ad
-                                                                        minim veniam, quis nostrud exercitation ullamco
-                                                                        laboris nisi ut aliquip ex ea
-                                                                        commodo consequat.
+                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                                    <div class="panel panel-warning">
+                                                                        <div class="panel-heading">
+                                                                            <h4 class="panel-title">
+                                                                                <a data-toggle="collapse"
+                                                                                   data-parent="#accordion"
+                                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
+                                                                                >Subir adjuntos / Aspectos evaluativos ,
+                                                                                    Documentos requeridos</a>
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div :id="evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_')"
+                                                                             class="panel-collapse collapse">
+                                                                            <div class="panel-body">
+
+
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <textarea
+                                                                                                    class="form-control"
+                                                                                                    v-model="evaluaciones.observacionEscritaValue"
+                                                                                            ></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <file-upload
+                                                                                                    :id="'myVueDropzone'+evaluaciones.id"
+                                                                                                    :thumbnailWidth="300"
+                                                                                                    :thumbnailHeight="100"
+                                                                                                    :maxFileSizeInMB="10"
+                                                                                                    :maxNumberOfFiles="99"
+                                                                                                    url="https://httpbin.org/post"
+                                                                                                    v-on:vdropzone-success="showSuccess"
+                                                                                                    :useFontAwesome="true">
+
+                                                                                            </file-upload>
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Aspectos evaluativos</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            {{evaluaciones.aspectoEvaluativo}}
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Documentos
+                                                                                                verificadores</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
+                                                                                                <li class="list-group-item">{{item}}</li>
+                                                                                            </span>
+                                                                                        </p>
+                                                                                    </div>
+
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
 
                                                             </div>
                                                         </div>
@@ -167,20 +418,80 @@
                                                             <div class="row"
                                                                  v-if="evaluaciones.observacionDocumental
                                                                  || evaluaciones.observacionEscrita == 1">
-                                                                <a data-toggle="collapse" data-parent="#accordion"
-                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/\s/g,''))">
-                                                                    Collapsible Group 1</a>
-                                                                <div :id="evaluaciones.nombreEvaluacion.replace(/\s/g,'')"
-                                                                     class="panel-collapse collapse in">
-                                                                    <div class="panel-body">Lorem ipsum dolor sit amet,
-                                                                        consectetur adipisicing elit,
-                                                                        sed do eiusmod tempor incididunt ut labore et
-                                                                        dolore magna aliqua. Ut enim ad
-                                                                        minim veniam, quis nostrud exercitation ullamco
-                                                                        laboris nisi ut aliquip ex ea
-                                                                        commodo consequat.
+                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                                    <div class="panel panel-warning">
+                                                                        <div class="panel-heading">
+                                                                            <h4 class="panel-title">
+                                                                                <a data-toggle="collapse"
+                                                                                   data-parent="#accordion"
+                                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
+                                                                                >Subir adjuntos / Aspectos evaluativos ,
+                                                                                    Documentos requeridos</a>
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div :id="evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_')"
+                                                                             class="panel-collapse collapse">
+                                                                            <div class="panel-body">
+
+
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <textarea
+                                                                                                    class="form-control"
+                                                                                                    v-model="evaluaciones.observacionEscritaValue"
+                                                                                            ></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <file-upload
+                                                                                                    :id="'myVueDropzone'+evaluaciones.id"
+                                                                                                    :thumbnailWidth="300"
+                                                                                                    :thumbnailHeight="100"
+                                                                                                    :maxFileSizeInMB="10"
+                                                                                                    :maxNumberOfFiles="99"
+                                                                                                    url="https://httpbin.org/post"
+                                                                                                    v-on:vdropzone-success="showSuccess"
+                                                                                                    :useFontAwesome="true">
+
+                                                                                            </file-upload>
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Aspectos evaluativos</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            {{evaluaciones.aspectoEvaluativo}}
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Documentos
+                                                                                                verificadores</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
+                                                                                                <li class="list-group-item">{{item}}</li>
+                                                                                            </span>
+                                                                                        </p>
+                                                                                    </div>
+
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
 
                                                             </div>
                                                         </div>
@@ -197,7 +508,19 @@
                                                 <div class="panel-body">
                                                     <div class="form-group"
                                                          v-for="evaluaciones in agrupacion.get_evaluaciones">
-                                                        <label class="control-label">{{evaluaciones.nombreEvaluacion}}</label>
+                                                        <div class="row">
+                                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                                <label class="control-label">{{evaluaciones.nombreEvaluacion}}</label>
+                                                            </div>
+                                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"
+                                                                 v-if="evaluaciones.criticidad">
+                                                                <h5 class="text-center">
+                                                                    Criticidad : <b>{{evaluaciones.criticidad}}</b>
+                                                                </h5>
+
+                                                            </div>
+                                                        </div>
+
                                                         <div v-if="evaluaciones.tipo === 'texto'">
                                                             <input type="text"
                                                                    name="name"
@@ -235,20 +558,80 @@
                                                             <div class="row"
                                                                  v-if="evaluaciones.observacionDocumental
                                                                  || evaluaciones.observacionEscrita == 1">
-                                                                <a data-toggle="collapse" data-parent="#accordion"
-                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/\s/g,''))">
-                                                                    Collapsible Group 1</a>
-                                                                <div :id="evaluaciones.nombreEvaluacion.replace(/\s/g,'')"
-                                                                     class="panel-collapse collapse in">
-                                                                    <div class="panel-body">Lorem ipsum dolor sit amet,
-                                                                        consectetur adipisicing elit,
-                                                                        sed do eiusmod tempor incididunt ut labore et
-                                                                        dolore magna aliqua. Ut enim ad
-                                                                        minim veniam, quis nostrud exercitation ullamco
-                                                                        laboris nisi ut aliquip ex ea
-                                                                        commodo consequat.
+                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                                    <div class="panel panel-warning">
+                                                                        <div class="panel-heading">
+                                                                            <h4 class="panel-title">
+                                                                                <a data-toggle="collapse"
+                                                                                   data-parent="#accordion"
+                                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
+                                                                                >Subir adjuntos / Aspectos evaluativos ,
+                                                                                    Documentos requeridos</a>
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div :id="evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_')"
+                                                                             class="panel-collapse collapse">
+                                                                            <div class="panel-body">
+
+
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <textarea
+                                                                                                    class="form-control"
+                                                                                                    v-model="evaluaciones.observacionEscritaValue"
+                                                                                            ></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <file-upload
+                                                                                                    :id="'myVueDropzone'+evaluaciones.id"
+                                                                                                    :thumbnailWidth="300"
+                                                                                                    :thumbnailHeight="100"
+                                                                                                    :maxFileSizeInMB="10"
+                                                                                                    :maxNumberOfFiles="99"
+                                                                                                    url="https://httpbin.org/post"
+                                                                                                    v-on:vdropzone-success="showSuccess"
+                                                                                                    :useFontAwesome="true">
+
+                                                                                            </file-upload>
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Aspectos evaluativos</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            {{evaluaciones.aspectoEvaluativo}}
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Documentos
+                                                                                                verificadores</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
+                                                                                                <li class="list-group-item">{{item}}</li>
+                                                                                            </span>
+                                                                                        </p>
+                                                                                    </div>
+
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
 
                                                             </div>
                                                         </div>
@@ -261,20 +644,80 @@
                                                             <div class="row"
                                                                  v-if="evaluaciones.observacionDocumental
                                                                  || evaluaciones.observacionEscrita == 1">
-                                                                <a data-toggle="collapse" data-parent="#accordion"
-                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/\s/g,''))">
-                                                                    Collapsible Group 1</a>
-                                                                <div :id="evaluaciones.nombreEvaluacion.replace(/\s/g,'')"
-                                                                     class="panel-collapse collapse in">
-                                                                    <div class="panel-body">Lorem ipsum dolor sit amet,
-                                                                        consectetur adipisicing elit,
-                                                                        sed do eiusmod tempor incididunt ut labore et
-                                                                        dolore magna aliqua. Ut enim ad
-                                                                        minim veniam, quis nostrud exercitation ullamco
-                                                                        laboris nisi ut aliquip ex ea
-                                                                        commodo consequat.
+                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                                    <div class="panel panel-warning">
+                                                                        <div class="panel-heading">
+                                                                            <h4 class="panel-title">
+                                                                                <a data-toggle="collapse"
+                                                                                   data-parent="#accordion"
+                                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
+                                                                                >Subir adjuntos / Aspectos evaluativos ,
+                                                                                    Documentos requeridos</a>
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div :id="evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_')"
+                                                                             class="panel-collapse collapse">
+                                                                            <div class="panel-body">
+
+
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <textarea
+                                                                                                    class="form-control"
+                                                                                                    v-model="evaluaciones.observacionEscritaValue"
+                                                                                            ></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <file-upload
+                                                                                                    :id="'myVueDropzone'+evaluaciones.id"
+                                                                                                    :thumbnailWidth="300"
+                                                                                                    :thumbnailHeight="100"
+                                                                                                    :maxFileSizeInMB="10"
+                                                                                                    :maxNumberOfFiles="99"
+                                                                                                    url="https://httpbin.org/post"
+                                                                                                    v-on:vdropzone-success="showSuccess"
+                                                                                                    :useFontAwesome="true">
+
+                                                                                            </file-upload>
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Aspectos evaluativos</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            {{evaluaciones.aspectoEvaluativo}}
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Documentos
+                                                                                                verificadores</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
+                                                                                                <li class="list-group-item">{{item}}</li>
+                                                                                            </span>
+                                                                                        </p>
+                                                                                    </div>
+
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
 
                                                             </div>
 
@@ -304,42 +747,67 @@
                                                                                 <a data-toggle="collapse"
                                                                                    data-parent="#accordion"
                                                                                    :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
-                                                                                >Collapsible Group 1</a>
+                                                                                >Subir adjuntos / Aspectos evaluativos ,
+                                                                                    Documentos requeridos</a>
                                                                             </h4>
                                                                         </div>
                                                                         <div :id="evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_')"
                                                                              class="panel-collapse collapse">
                                                                             <div class="panel-body">
 
+
                                                                                 <div class="row">
-                                                                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                                                                        <h5 class="text-center">Aspectos
-                                                                                            evaluativos</h5>
-                                                                                        <hr>
-                                                                                        {{evaluaciones.aspectoEvaluativo}}
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <textarea
+                                                                                                    class="form-control"
+                                                                                                    v-model="evaluaciones.observacionEscritaValue"
+                                                                                            ></textarea>
+                                                                                        </div>
                                                                                     </div>
-                                                                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <file-upload
+                                                                                                    :id="'myVueDropzone'+evaluaciones.id"
+                                                                                                    :thumbnailWidth="300"
+                                                                                                    :thumbnailHeight="100"
+                                                                                                    :maxFileSizeInMB="10"
+                                                                                                    :maxNumberOfFiles="99"
+                                                                                                    url="//localhost/PAE_PRUEBA/public/api/get/files"
+                                                                                                    :dropzone-options="options"
+                                                                                                    :use-custom-dropzone-options="true"
+                                                                                                    v-on:vdropzone-success="showSuccess"
+                                                                                                    :useFontAwesome="true">
+
+                                                                                            </file-upload>
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                                                                         <h5 class="text-center">
-                                                                                            Documentos verificadores
+                                                                                            <b>Aspectos evaluativos</b>
                                                                                         </h5>
                                                                                         <hr>
-                                                                                        {{evaluaciones.documentosVerificadores}}
+                                                                                        <p class="text-center">
+                                                                                            {{evaluaciones.aspectoEvaluativo}}
+                                                                                        </p>
                                                                                     </div>
-                                                                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                                                                         <h5 class="text-center">
-                                                                                            Criticidad</h5>
+                                                                                            <b>Documentos
+                                                                                                verificadores</b>
+                                                                                        </h5>
                                                                                         <hr>
-                                                                                        {{evaluaciones.criticidad}}
+                                                                                        <p class="text-center">
+                                                                                            <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
+                                                                                                <li class="list-group-item">{{item}}</li>
+                                                                                            </span>
+                                                                                        </p>
                                                                                     </div>
-                                                                                </div>
 
-                                                                                <div class="row">
-                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-
-                                                                                    </div>
-                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-
-                                                                                    </div>
                                                                                 </div>
 
 
@@ -364,30 +832,75 @@
                                                             <div class="row"
                                                                  v-if="evaluaciones.observacionDocumental
                                                                  || evaluaciones.observacionEscrita == 1">
-
-
-                                                                <div class="panel-group" id="accordion">
-                                                                    <div class="panel panel-default">
+                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                                    <div class="panel panel-warning">
                                                                         <div class="panel-heading">
                                                                             <h4 class="panel-title">
                                                                                 <a data-toggle="collapse"
                                                                                    data-parent="#accordion"
                                                                                    :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
-                                                                                >Collapsible Group 1</a>
+                                                                                >Subir adjuntos / Aspectos evaluativos ,
+                                                                                    Documentos requeridos</a>
                                                                             </h4>
                                                                         </div>
                                                                         <div :id="evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_')"
-                                                                             class="panel-collapse collapse in">
-                                                                            <div class="panel-body">Lorem ipsum dolor
-                                                                                sit amet,
-                                                                                consectetur adipisicing elit,
-                                                                                sed do eiusmod tempor incididunt ut
-                                                                                labore et
-                                                                                dolore magna aliqua. Ut enim ad
-                                                                                minim veniam, quis nostrud exercitation
-                                                                                ullamco
-                                                                                laboris nisi ut aliquip ex ea
-                                                                                commodo consequat.
+                                                                             class="panel-collapse collapse">
+                                                                            <div class="panel-body">
+
+
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <textarea
+                                                                                                    class="form-control"
+                                                                                                    v-model="evaluaciones.observacionEscritaValue"
+                                                                                            ></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <file-upload
+                                                                                                    :id="'myVueDropzone'+evaluaciones.id"
+                                                                                                    :thumbnailWidth="300"
+                                                                                                    :thumbnailHeight="100"
+                                                                                                    :maxFileSizeInMB="10"
+                                                                                                    :maxNumberOfFiles="99"
+                                                                                                    url="https://httpbin.org/post"
+                                                                                                    v-on:vdropzone-success="showSuccess"
+                                                                                                    :useFontAwesome="true">
+
+                                                                                            </file-upload>
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Aspectos evaluativos</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            {{evaluaciones.aspectoEvaluativo}}
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Documentos
+                                                                                                verificadores</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
+                                                                                                <li class="list-group-item">{{item}}</li>
+                                                                                            </span>
+                                                                                        </p>
+                                                                                    </div>
+
+                                                                                </div>
+
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -428,12 +941,16 @@
         </div><!-- /.modal -->
     </div>
 </template>
+<style>
 
+</style>
 <script>
     import _ from 'lodash'
+    import Dropzone from 'vue2-dropzone/src/index.vue'
     export default {
         mounted() {
-            this.getChecklist()
+            this.getChecklist();
+            this.destructure();
         },
         props: {
             revision: Object
@@ -445,9 +962,33 @@
                 opcionesEvaluacion: '',
                 items: [],
                 evaluaciones: [],
-                showItems: 0
+                showItems: 0,
+                options: {
+                    headers: {'X-CSRF-TOKEN': Laravel.csrfToken},
+                    dictDefaultMessage: 'Haga click o arrastre aqui para subir archivos.',
+                    dictFallbackMessage: 'Este navagador no acepta drag & drop.',
+                    dictFileTooBig: 'El archivo subido es demasiado grande. Por favor suba uno mas pequeño.',
+                    dictInvalidFileType: 'Este archivo no es permitido.',
+                    dictResponseError: 'El servidor invalido la operacion codigo status {{statusCode}} .',
+                    dictCancelUpload: 'Cancelar subida .',
+                    dictCancelUploadConfirmation: '¿ Esta seguro que desea cancelar la subida de este archivo ?',
+                    dictRemoveFile: '¿ Eliminar archivo ?',
+                    thumbnailWidth: 290,
+                    thumbnailHeight: 140,
+                    uploadMultiple: true,
+                    addRemoveLinks: true,
+                    paramName: 'documentos',
+                    previewTemplate: '<div class="dz-preview dz-file-preview">  <div class="dz-image" style="width:' + this.thumbnailWidth + 'px;height:' + this.thumbnailHeight + 'px"><img data-dz-thumbnail /></div>  <div class="dz-details">    <div class="dz-size"><span data-dz-size></span></div>    <div class="dz-filename"><span data-dz-name></span></div>  </div>  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>  <div class="dz-error-message"><span data-dz-errormessage></span></div>  <div class="dz-success-mark"><i class="fa fa-check fa-3x"></i> </div>  <div class="dz-error-mark"><i class="fa fa-close fa-3x"></i></div></div>',
+                    params: {
+                        revision: this.revision
+                    }
+
+
+                },
+
             }
         },
+
 
         methods: {
 
@@ -470,15 +1011,30 @@
                 })
             },
 
+            destructure(){
+                let arr = this.revision;
+
+                _.forEach(arr, i => {
+                    console.log(i);
+                })
+            },
+
             saveChecklist(){
                 $('#endChecklistModal').modal('show');
             },
 
+
             showItem(id){
                 this.showItems = id - 1;
+            },
+            showSuccess(el, a){
+                console.log(el);
+                console.log(a)
             }
         },
         computed: {},
-        components: {},
+        components: {
+            'file-upload': Dropzone,
+        },
     }
 </script>
