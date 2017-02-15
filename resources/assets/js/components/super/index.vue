@@ -6,10 +6,10 @@
                 Asignar
             </a></li>
             <li>
-                <a href="#tab2" role="tab" data-toggle="tab">Tab2</a>
+                <a href="#tab2" role="tab" data-toggle="tab">Ver estado de asignaciones</a>
             </li>
             <li>
-                <a href="#tab3" role="tab" data-toggle="tab">Tab3</a>
+                <a href="#tab3" role="tab" data-toggle="tab">Reporting</a>
             </li>
         </ul>
         <!-- TAB CONTENT -->
@@ -18,8 +18,7 @@
                 <asignar></asignar>
             </div>
             <div class="tab-pane fade" id="tab2">
-                <h2>Tab2</h2>
-                <p>Lorem ipsum.</p>
+                <estado></estado>
             </div>
             <div class="tab-pane fade" id="tab3">
                 <h2>Tab3</h2>
@@ -32,8 +31,10 @@
 
 <script>
     import asignar from './modulos/asignar.vue'
+    import estado from './modulos/estadoAsignaciones.vue'
     export default {
-        mounted() {},
+        mounted() {
+        },
 
         data(){
             return {}
@@ -42,7 +43,8 @@
         methods: {},
         computed: {},
         components: {
-            'asignar': asignar
+            'asignar': asignar,
+            'estado': estado
         },
     }
 </script>

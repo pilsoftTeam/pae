@@ -130,4 +130,9 @@ class EvaluacionesController extends Controller
         return response()->json(200);
 
     }
+
+    public function end(Request $request)
+    {
+        return response()->json($request->all());
+    }
 }

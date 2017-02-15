@@ -31945,6 +31945,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -32019,10 +32030,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $('#endChecklistModal').modal('show');
         },
         showItem: function showItem(id) {
-            this.showItems = id - 1;
+            this.showItems = id;
         },
         showSuccess: function showSuccess() {},
-        end: function end() {}
+        end: function end() {
+            var self = this;
+            var evaluacion = self.checklist;
+            var item = [];
+
+            __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.forEach(evaluacion, function (e) {
+
+                var obj = {
+                    idEvaluacion: '',
+                    idItem: '',
+                    idAgrupacion: '',
+                    valorInput: '',
+                    valorObservacion: ''
+                };
+
+                __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.forEach(e.get_items, function (i) {
+
+                    if (i.get_agrupaciones.length > 0) {
+
+                        __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.forEach(i.get_agrupaciones, function (a) {
+
+                            __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.forEach(a.get_evaluaciones, function (s) {
+                                console.log(s);
+                            });
+                        });
+                    }
+                });
+
+                console.log();
+            });
+
+            //axios.post('api/end/checklist').then(r => {
+            //    console.log(r.data)
+            //}).catch(e => {
+            //    console.log(e)
+            //})
+        }
     },
     computed: {},
     components: {
@@ -32039,6 +32086,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modulos_asignar_vue__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modulos_asignar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__modulos_asignar_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modulos_estadoAsignaciones_vue__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modulos_estadoAsignaciones_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__modulos_estadoAsignaciones_vue__);
 //
 //
 //
@@ -32070,7 +32119,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = {
@@ -32083,7 +32132,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {},
     computed: {},
     components: {
-        'asignar': __WEBPACK_IMPORTED_MODULE_0__modulos_asignar_vue___default.a
+        'asignar': __WEBPACK_IMPORTED_MODULE_0__modulos_asignar_vue___default.a,
+        'estado': __WEBPACK_IMPORTED_MODULE_1__modulos_estadoAsignaciones_vue___default.a
     }
 };
 
@@ -34809,7 +34859,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -35995,7 +36045,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp2\\htdocs\\pae\\node_modules\\vue2-dropzone\\src\\index.vue"
+Component.options.__file = "C:\\xampp\\htdocs\\pae\\node_modules\\vue2-dropzone\\src\\index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -36033,7 +36083,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp2\\htdocs\\pae\\resources\\assets\\js\\components\\admin\\modulos\\checklist\\checklist.vue"
+Component.options.__file = "C:\\xampp\\htdocs\\pae\\resources\\assets\\js\\components\\admin\\modulos\\checklist\\checklist.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] checklist.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -36071,7 +36121,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp2\\htdocs\\pae\\resources\\assets\\js\\components\\admin\\modulos\\checklist\\items.vue"
+Component.options.__file = "C:\\xampp\\htdocs\\pae\\resources\\assets\\js\\components\\admin\\modulos\\checklist\\items.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] items.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -36105,7 +36155,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp2\\htdocs\\pae\\resources\\assets\\js\\components\\admin\\modulos\\users\\users.vue"
+Component.options.__file = "C:\\xampp\\htdocs\\pae\\resources\\assets\\js\\components\\admin\\modulos\\users\\users.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] users.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -36143,7 +36193,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp2\\htdocs\\pae\\resources\\assets\\js\\components\\app.vue"
+Component.options.__file = "C:\\xampp\\htdocs\\pae\\resources\\assets\\js\\components\\app.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] app.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -36177,7 +36227,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp2\\htdocs\\pae\\resources\\assets\\js\\components\\revisor\\index.vue"
+Component.options.__file = "C:\\xampp\\htdocs\\pae\\resources\\assets\\js\\components\\revisor\\index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -36215,7 +36265,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp2\\htdocs\\pae\\resources\\assets\\js\\components\\revisor\\modulos\\revisionex.vue"
+Component.options.__file = "C:\\xampp\\htdocs\\pae\\resources\\assets\\js\\components\\revisor\\modulos\\revisionex.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] revisionex.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -36249,7 +36299,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp2\\htdocs\\pae\\resources\\assets\\js\\components\\super\\index.vue"
+Component.options.__file = "C:\\xampp\\htdocs\\pae\\resources\\assets\\js\\components\\super\\index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -36283,7 +36333,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "C:\\xampp2\\htdocs\\pae\\resources\\assets\\js\\components\\super\\modulos\\asignar.vue"
+Component.options.__file = "C:\\xampp\\htdocs\\pae\\resources\\assets\\js\\components\\super\\modulos\\asignar.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] asignar.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -36992,7 +37042,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "tab1"
     }
-  }, [_c('asignar')], 1), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)])])
+  }, [_c('asignar')], 1), _vm._v(" "), _c('div', {
+    staticClass: "tab-pane fade",
+    attrs: {
+      "id": "tab2"
+    }
+  }, [_c('estado')], 1), _vm._v(" "), _vm._m(1)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('ul', {
     staticClass: "nav nav-tabs",
@@ -37013,20 +37068,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "role": "tab",
       "data-toggle": "tab"
     }
-  }, [_vm._v("Tab2")])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("Ver estado de asignaciones")])]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#tab3",
       "role": "tab",
       "data-toggle": "tab"
     }
-  }, [_vm._v("Tab3")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "tab-pane fade",
-    attrs: {
-      "id": "tab2"
-    }
-  }, [_c('h2', [_vm._v("Tab2")]), _vm._v(" "), _c('p', [_vm._v("Lorem ipsum.")])])
+  }, [_vm._v("Reporting")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "tab-pane fade",
@@ -37999,7 +38047,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('form', {
-    staticClass: "vue-dropzone dropzone",
+    staticClass: "dropzone",
     attrs: {
       "action": _vm.url,
       "id": _vm.id
@@ -38056,7 +38104,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('div', _vm._l((element.get_items), function(items, key) {
       return _c('div', {
         staticClass: "row"
-      }, [(key == _vm.showItems) ? _c('div', [_c('div', [_c('div', {
+      }, [(items.id == _vm.showItems) ? _c('div', [_c('div', [_c('div', {
         staticClass: "panel panel-default"
       }, [_c('h4', {
         staticClass: "text-center"
@@ -38137,7 +38185,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "form-group"
         }, [_c('label', {
           staticClass: "control-label"
-        }, [_vm._v("Observacion\n                                                                                            escrita")]), _vm._v(" "), _c('textarea', {
+        }, [_vm._v("Observacion\n                                                                                        escrita")]), _vm._v(" "), _c('textarea', {
           directives: [{
             name: "model",
             rawName: "v-model",
@@ -38160,7 +38208,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "form-group"
         }, [_c('label', {
           staticClass: "control-label"
-        }, [_vm._v("Subir\n                                                                                            archivos")]), _vm._v(" "), _c('file-upload', {
+        }, [_vm._v("Subir\n                                                                                        archivos")]), _vm._v(" "), _c('file-upload', {
           attrs: {
             "id": 'myVueDropzone' + evaluaciones.id,
             "thumbnailWidth": 300,
@@ -38181,13 +38229,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "text-center"
         }, [_vm._v("\n                                                                                        " + _vm._s(evaluaciones.aspectoEvaluativo) + "\n                                                                                    ")])]), _vm._v(" "), _c('div', {
           staticClass: "col-xs-6 col-sm-6 col-md-6 col-lg-6"
-        }, [_vm._m(2, true), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+        }, [_vm._m(2, true), _vm._v(" "), _c('hr'), _vm._v(" "), (evaluaciones.documentosVerificadores) ? _c('p', {
           staticClass: "text-center"
         }, _vm._l((evaluaciones.documentosVerificadores.split(',')), function(item) {
           return _c('span', [_c('li', {
             staticClass: "list-group-item"
           }, [_vm._v(_vm._s(item))])])
-        }))])])])])])])]) : _vm._e()]) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'numero') ? _c('div', [_c('input', {
+        })) : _vm._e()])])])])])])]) : _vm._e()]) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'numero') ? _c('div', [_c('input', {
           directives: [{
             name: "model",
             rawName: "v-model",
@@ -38248,7 +38296,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "form-group"
         }, [_c('label', {
           staticClass: "control-label"
-        }, [_vm._v("Observacion\n                                                                                            escrita")]), _vm._v(" "), _c('textarea', {
+        }, [_vm._v("Observacion\n                                                                                        escrita")]), _vm._v(" "), _c('textarea', {
           directives: [{
             name: "model",
             rawName: "v-model",
@@ -38271,7 +38319,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "form-group"
         }, [_c('label', {
           staticClass: "control-label"
-        }, [_vm._v("Subir\n                                                                                            archivos")]), _vm._v(" "), _c('file-upload', {
+        }, [_vm._v("Subir\n                                                                                        archivos")]), _vm._v(" "), _c('file-upload', {
           attrs: {
             "id": 'myVueDropzone' + evaluaciones.id,
             "thumbnailWidth": 300,
@@ -38292,13 +38340,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "text-center"
         }, [_vm._v("\n                                                                                        " + _vm._s(evaluaciones.aspectoEvaluativo) + "\n                                                                                    ")])]), _vm._v(" "), _c('div', {
           staticClass: "col-xs-6 col-sm-6 col-md-6 col-lg-6"
-        }, [_vm._m(4, true), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+        }, [_vm._m(4, true), _vm._v(" "), _c('hr'), _vm._v(" "), (evaluaciones.documentosVerificadores) ? _c('p', {
           staticClass: "text-center"
         }, _vm._l((evaluaciones.documentosVerificadores.split(',')), function(item) {
           return _c('span', [_c('li', {
             staticClass: "list-group-item"
           }, [_vm._v(_vm._s(item))])])
-        }))])])])])])])]) : _vm._e()]) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'fecha') ? _c('div', [_c('input', {
+        })) : _vm._e()])])])])])])]) : _vm._e()]) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'fecha') ? _c('div', [_c('input', {
           directives: [{
             name: "model",
             rawName: "v-model",
@@ -38359,7 +38407,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "form-group"
         }, [_c('label', {
           staticClass: "control-label"
-        }, [_vm._v("Observacion\n                                                                                            escrita")]), _vm._v(" "), _c('textarea', {
+        }, [_vm._v("Observacion\n                                                                                        escrita")]), _vm._v(" "), _c('textarea', {
           directives: [{
             name: "model",
             rawName: "v-model",
@@ -38382,7 +38430,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "form-group"
         }, [_c('label', {
           staticClass: "control-label"
-        }, [_vm._v("Subir\n                                                                                            archivos")]), _vm._v(" "), _c('file-upload', {
+        }, [_vm._v("Subir\n                                                                                        archivos")]), _vm._v(" "), _c('file-upload', {
           attrs: {
             "id": 'myVueDropzone' + evaluaciones.id,
             "thumbnailWidth": 300,
@@ -38403,13 +38451,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "text-center"
         }, [_vm._v("\n                                                                                        " + _vm._s(evaluaciones.aspectoEvaluativo) + "\n                                                                                    ")])]), _vm._v(" "), _c('div', {
           staticClass: "col-xs-6 col-sm-6 col-md-6 col-lg-6"
-        }, [_vm._m(6, true), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+        }, [_vm._m(6, true), _vm._v(" "), _c('hr'), _vm._v(" "), (evaluaciones.documentosVerificadores) ? _c('p', {
           staticClass: "text-center"
         }, _vm._l((evaluaciones.documentosVerificadores.split(',')), function(item) {
           return _c('span', [_c('li', {
             staticClass: "list-group-item"
           }, [_vm._v(_vm._s(item))])])
-        }))])])])])])])]) : _vm._e()]) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'seleccionUnica') ? _c('div', [_vm._l((evaluaciones.get_opciones), function(opciones) {
+        })) : _vm._e()])])])])])])]) : _vm._e()]) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'seleccionUnica') ? _c('div', [_vm._l((evaluaciones.get_opciones), function(opciones) {
           return _c('select', {
             directives: [{
               name: "model",
@@ -38472,7 +38520,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "form-group"
         }, [_c('label', {
           staticClass: "control-label"
-        }, [_vm._v("Observacion\n                                                                                            escrita")]), _vm._v(" "), _c('textarea', {
+        }, [_vm._v("Observacion\n                                                                                        escrita")]), _vm._v(" "), _c('textarea', {
           directives: [{
             name: "model",
             rawName: "v-model",
@@ -38495,7 +38543,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "form-group"
         }, [_c('label', {
           staticClass: "control-label"
-        }, [_vm._v("Subir\n                                                                                            archivos")]), _vm._v(" "), _c('file-upload', {
+        }, [_vm._v("Subir\n                                                                                        archivos")]), _vm._v(" "), _c('file-upload', {
           attrs: {
             "id": 'myVueDropzone' + evaluaciones.id,
             "thumbnailWidth": 300,
@@ -38516,13 +38564,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "text-center"
         }, [_vm._v("\n                                                                                        " + _vm._s(evaluaciones.aspectoEvaluativo) + "\n                                                                                    ")])]), _vm._v(" "), _c('div', {
           staticClass: "col-xs-6 col-sm-6 col-md-6 col-lg-6"
-        }, [_vm._m(8, true), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+        }, [_vm._m(8, true), _vm._v(" "), _c('hr'), _vm._v(" "), (evaluaciones.documentosVerificadores) ? _c('p', {
           staticClass: "text-center"
         }, _vm._l((evaluaciones.documentosVerificadores.split(',')), function(item) {
           return _c('span', [_c('li', {
             staticClass: "list-group-item"
           }, [_vm._v(_vm._s(item))])])
-        }))])])])])])])]) : _vm._e()], 2) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'seleccionMultiple') ? _c('div', [_c('select', {
+        })) : _vm._e()])])])])])])]) : _vm._e()], 2) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'seleccionMultiple') ? _c('div', [_c('select', {
           directives: [{
             name: "model",
             rawName: "v-model",
@@ -38584,7 +38632,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "form-group"
         }, [_c('label', {
           staticClass: "control-label"
-        }, [_vm._v("Observacion\n                                                                                            escrita")]), _vm._v(" "), _c('textarea', {
+        }, [_vm._v("Observacion\n                                                                                        escrita")]), _vm._v(" "), _c('textarea', {
           directives: [{
             name: "model",
             rawName: "v-model",
@@ -38607,7 +38655,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "form-group"
         }, [_c('label', {
           staticClass: "control-label"
-        }, [_vm._v("Subir\n                                                                                            archivos")]), _vm._v(" "), _c('file-upload', {
+        }, [_vm._v("Subir\n                                                                                        archivos")]), _vm._v(" "), _c('file-upload', {
           attrs: {
             "id": 'myVueDropzone' + evaluaciones.id,
             "thumbnailWidth": 300,
@@ -38628,13 +38676,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "text-center"
         }, [_vm._v("\n                                                                                        " + _vm._s(evaluaciones.aspectoEvaluativo) + "\n                                                                                    ")])]), _vm._v(" "), _c('div', {
           staticClass: "col-xs-6 col-sm-6 col-md-6 col-lg-6"
-        }, [_vm._m(10, true), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+        }, [_vm._m(10, true), _vm._v(" "), _c('hr'), _vm._v(" "), (evaluaciones.documentosVerificadores) ? _c('p', {
           staticClass: "text-center"
         }, _vm._l((evaluaciones.documentosVerificadores.split(',')), function(item) {
           return _c('span', [_c('li', {
             staticClass: "list-group-item"
           }, [_vm._v(_vm._s(item))])])
-        }))])])])])])])]) : _vm._e()]) : _vm._e()])
+        })) : _vm._e()])])])])])])]) : _vm._e()]) : _vm._e()])
       }))])]) : _vm._e(), _vm._v(" "), (items.get_agrupaciones.length > 0) ? _c('div', _vm._l((items.get_agrupaciones), function(agrupacion) {
         return _c('div', {
           staticClass: "panel panel-primary"
@@ -38715,7 +38763,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "form-group"
           }, [_c('label', {
             staticClass: "control-label"
-          }, [_vm._v("Observacion\n                                                                                            escrita")]), _vm._v(" "), _c('textarea', {
+          }, [_vm._v("Observacion\n                                                                                        escrita")]), _vm._v(" "), _c('textarea', {
             directives: [{
               name: "model",
               rawName: "v-model",
@@ -38738,7 +38786,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "form-group"
           }, [_c('label', {
             staticClass: "control-label"
-          }, [_vm._v("Subir\n                                                                                            archivos")]), _vm._v(" "), _c('file-upload', {
+          }, [_vm._v("Subir\n                                                                                        archivos")]), _vm._v(" "), _c('file-upload', {
             attrs: {
               "id": 'myVueDropzone' + evaluaciones.id,
               "thumbnailWidth": 300,
@@ -38759,13 +38807,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "text-center"
           }, [_vm._v("\n                                                                                        " + _vm._s(evaluaciones.aspectoEvaluativo) + "\n                                                                                    ")])]), _vm._v(" "), _c('div', {
             staticClass: "col-xs-6 col-sm-6 col-md-6 col-lg-6"
-          }, [_vm._m(12, true), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+          }, [_vm._m(12, true), _vm._v(" "), _c('hr'), _vm._v("\n                                                                                    s\n                                                                                    "), (evaluaciones.documentosVerificadores) ? _c('p', {
             staticClass: "text-center"
           }, _vm._l((evaluaciones.documentosVerificadores.split(',')), function(item) {
             return _c('span', [_c('li', {
               staticClass: "list-group-item"
             }, [_vm._v(_vm._s(item))])])
-          }))])])])])])])]) : _vm._e()]) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'numero') ? _c('div', [_c('input', {
+          })) : _vm._e()])])])])])])]) : _vm._e()]) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'numero') ? _c('div', [_c('input', {
             directives: [{
               name: "model",
               rawName: "v-model",
@@ -38826,7 +38874,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "form-group"
           }, [_c('label', {
             staticClass: "control-label"
-          }, [_vm._v("Observacion\n                                                                                            escrita")]), _vm._v(" "), _c('textarea', {
+          }, [_vm._v("Observacion\n                                                                                        escrita")]), _vm._v(" "), _c('textarea', {
             directives: [{
               name: "model",
               rawName: "v-model",
@@ -38849,7 +38897,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "form-group"
           }, [_c('label', {
             staticClass: "control-label"
-          }, [_vm._v("Subir\n                                                                                            archivos")]), _vm._v(" "), _c('file-upload', {
+          }, [_vm._v("Subir\n                                                                                        archivos")]), _vm._v(" "), _c('file-upload', {
             attrs: {
               "id": 'myVueDropzone' + evaluaciones.id,
               "thumbnailWidth": 300,
@@ -38870,13 +38918,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "text-center"
           }, [_vm._v("\n                                                                                        " + _vm._s(evaluaciones.aspectoEvaluativo) + "\n                                                                                    ")])]), _vm._v(" "), _c('div', {
             staticClass: "col-xs-6 col-sm-6 col-md-6 col-lg-6"
-          }, [_vm._m(14, true), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+          }, [_vm._m(14, true), _vm._v(" "), _c('hr'), _vm._v(" "), (evaluaciones.documentosVerificadores) ? _c('p', {
             staticClass: "text-center"
           }, _vm._l((evaluaciones.documentosVerificadores.split(',')), function(item) {
             return _c('span', [_c('li', {
               staticClass: "list-group-item"
             }, [_vm._v(_vm._s(item))])])
-          }))])])])])])])]) : _vm._e()]) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'fecha') ? _c('div', [_c('input', {
+          })) : _vm._e()])])])])])])]) : _vm._e()]) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'fecha') ? _c('div', [_c('input', {
             directives: [{
               name: "model",
               rawName: "v-model",
@@ -38937,7 +38985,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "form-group"
           }, [_c('label', {
             staticClass: "control-label"
-          }, [_vm._v("Observacion\n                                                                                            escrita")]), _vm._v(" "), _c('textarea', {
+          }, [_vm._v("Observacion\n                                                                                        escrita")]), _vm._v(" "), _c('textarea', {
             directives: [{
               name: "model",
               rawName: "v-model",
@@ -38960,7 +39008,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "form-group"
           }, [_c('label', {
             staticClass: "control-label"
-          }, [_vm._v("Subir\n                                                                                            archivos")]), _vm._v(" "), _c('file-upload', {
+          }, [_vm._v("Subir\n                                                                                        archivos")]), _vm._v(" "), _c('file-upload', {
             attrs: {
               "id": 'myVueDropzone' + evaluaciones.id,
               "thumbnailWidth": 300,
@@ -38981,13 +39029,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "text-center"
           }, [_vm._v("\n                                                                                        " + _vm._s(evaluaciones.aspectoEvaluativo) + "\n                                                                                    ")])]), _vm._v(" "), _c('div', {
             staticClass: "col-xs-6 col-sm-6 col-md-6 col-lg-6"
-          }, [_vm._m(16, true), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+          }, [_vm._m(16, true), _vm._v(" "), _c('hr'), _vm._v(" "), (evaluaciones.documentosVerificadores) ? _c('p', {
             staticClass: "text-center"
           }, _vm._l((evaluaciones.documentosVerificadores.split(',')), function(item) {
             return _c('span', [_c('li', {
               staticClass: "list-group-item"
             }, [_vm._v(_vm._s(item))])])
-          }))])])])])])])]) : _vm._e()]) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'seleccionUnica') ? _c('div', [_vm._l((evaluaciones.get_opciones), function(opciones) {
+          })) : _vm._e()])])])])])])]) : _vm._e()]) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'seleccionUnica') ? _c('div', [_vm._l((evaluaciones.get_opciones), function(opciones) {
             return _c('select', {
               directives: [{
                 name: "model",
@@ -39050,7 +39098,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "form-group"
           }, [_c('label', {
             staticClass: "control-label"
-          }, [_vm._v("Observacion\n                                                                                            escrita")]), _vm._v(" "), _c('textarea', {
+          }, [_vm._v("Observacion\n                                                                                        escrita")]), _vm._v(" "), _c('textarea', {
             directives: [{
               name: "model",
               rawName: "v-model",
@@ -39073,7 +39121,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "form-group"
           }, [_c('label', {
             staticClass: "control-label"
-          }, [_vm._v("Subir\n                                                                                            archivos")]), _vm._v(" "), _c('file-upload', {
+          }, [_vm._v("Subir\n                                                                                        archivos")]), _vm._v(" "), _c('file-upload', {
             attrs: {
               "id": 'myVueDropzone' + evaluaciones.id,
               "thumbnailWidth": 300,
@@ -39094,13 +39142,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "text-center"
           }, [_vm._v("\n                                                                                        " + _vm._s(evaluaciones.aspectoEvaluativo) + "\n                                                                                    ")])]), _vm._v(" "), _c('div', {
             staticClass: "col-xs-6 col-sm-6 col-md-6 col-lg-6"
-          }, [_vm._m(18, true), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+          }, [_vm._m(18, true), _vm._v(" "), _c('hr'), _vm._v(" "), (evaluaciones.documentosVerificadores) ? _c('p', {
             staticClass: "text-center"
           }, _vm._l((evaluaciones.documentosVerificadores.split(',')), function(item) {
             return _c('span', [_c('li', {
               staticClass: "list-group-item"
             }, [_vm._v(_vm._s(item))])])
-          }))])])])])])])]) : _vm._e(), _vm._v(" "), _c('hr')], 2) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'seleccionMultiple') ? _c('div', [_c('select', {
+          })) : _vm._e()])])])])])])]) : _vm._e(), _vm._v(" "), _c('hr')], 2) : _vm._e(), _vm._v(" "), (evaluaciones.tipo === 'seleccionMultiple') ? _c('div', [_c('select', {
             directives: [{
               name: "model",
               rawName: "v-model",
@@ -39162,7 +39210,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "form-group"
           }, [_c('label', {
             staticClass: "control-label"
-          }, [_vm._v("Observacion\n                                                                                            escrita")]), _vm._v(" "), _c('textarea', {
+          }, [_vm._v("Observacion\n                                                                                        escrita")]), _vm._v(" "), _c('textarea', {
             directives: [{
               name: "model",
               rawName: "v-model",
@@ -39185,7 +39233,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "form-group"
           }, [_c('label', {
             staticClass: "control-label"
-          }, [_vm._v("Subir\n                                                                                            archivos")]), _vm._v(" "), _c('file-upload', {
+          }, [_vm._v("Subir\n                                                                                        archivos")]), _vm._v(" "), _c('file-upload', {
             attrs: {
               "id": 'myVueDropzone' + evaluaciones.id,
               "thumbnailWidth": 300,
@@ -39206,22 +39254,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             staticClass: "text-center"
           }, [_vm._v("\n                                                                                        " + _vm._s(evaluaciones.aspectoEvaluativo) + "\n                                                                                    ")])]), _vm._v(" "), _c('div', {
             staticClass: "col-xs-6 col-sm-6 col-md-6 col-lg-6"
-          }, [_vm._m(20, true), _vm._v(" "), _c('hr'), _vm._v(" "), _c('p', {
+          }, [_vm._m(20, true), _vm._v(" "), _c('hr'), _vm._v(" "), (evaluaciones.documentosVerificadores) ? _c('p', {
             staticClass: "text-center"
           }, _vm._l((evaluaciones.documentosVerificadores.split(',')), function(item) {
             return _c('span', [_c('li', {
               staticClass: "list-group-item"
             }, [_vm._v(_vm._s(item))])])
-          }))])])])])])])]) : _vm._e()]) : _vm._e()])
+          })) : _vm._e()])])])])])])]) : _vm._e()]) : _vm._e()])
         }))])
       })) : _vm._e()])])])]) : _vm._e()])
     }))
-  })), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.showEnd) ? _c('button', {
+  })), _vm._v(" "), _c('br'), _vm._v(" "), _c('button', {
     staticClass: "btn btn-success btn-block btn-lg",
     attrs: {
       "type": "button"
+    },
+    on: {
+      "click": _vm.end
     }
-  }, [_vm._v("\n            Terminar evaluacion\n        ")]) : _vm._e(), _vm._v(" "), _c('br')]), _vm._v(" "), _vm._m(21)])
+  }, [_vm._v("\n            Terminar evaluacion\n        ")]), _vm._v(" "), _c('br')]), _vm._v(" "), _vm._m(21)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('h4', {
     staticClass: "text-center"
@@ -39313,9 +39364,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "id": "endChecklistModal"
     }
   }, [_c('div', {
-    staticClass: "modal-dialog"
+    staticClass: "modal-dialog modal-xs"
   }, [_c('div', {
-    staticClass: "modal-content modal-sm"
+    staticClass: "modal-content"
   }, [_c('div', {
     staticClass: "modal-header"
   }, [_c('button', {
@@ -39497,163 +39548,110 @@ module.exports = function listToStyles (parentId, list) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 
 var Dropzone = __webpack_require__(77);
+Dropzone.autoDiscover = false;
 
 exports.default = {
-  props: {
-    id: {
-      type: String,
-      required: true
+    props: {
+        id: {
+            type: String,
+            required: true
+        },
+        url: {
+            type: String,
+            required: true
+        },
+        clickable: {
+            type: Boolean,
+            default: true
+        },
+        acceptedFileTypes: {
+            type: String
+        },
+        thumbnailHeight: {
+            type: Number,
+            default: 200
+        },
+        thumbnailWidth: {
+            type: Number,
+            default: 200
+        },
+        showRemoveLink: {
+            type: Boolean,
+            default: true
+        },
+        maxFileSizeInMB: {
+            type: Number,
+            default: 2
+        },
+        maxNumberOfFiles: {
+            type: Number,
+            default: 5
+        },
+        autoProcessQueue: {
+            type: Boolean,
+            default: true
+        },
+        useCustomDropzoneOptions: {
+            type: Boolean,
+            default: false
+        },
+        dropzoneOptions: {
+            type: Object
+        }
     },
-    url: {
-      type: String,
-      required: true
+    events: {
+        removeAllFiles: function removeAllFiles() {
+            this.dropzone.removeAllFiles(true);
+        },
+        processQueue: function processQueue() {
+            this.dropzone.processQueue();
+        }
     },
-    clickable: {
-      type: Boolean,
-      default: true
-    },
-    acceptedFileTypes: {
-      type: String
-    },
-    thumbnailHeight: {
-      type: Number,
-      default: 200
-    },
-    thumbnailWidth: {
-      type: Number,
-      default: 200
-    },
-    showRemoveLink: {
-      type: Boolean,
-      default: true
-    },
-    maxFileSizeInMB: {
-      type: Number,
-      default: 2
-    },
-    maxNumberOfFiles: {
-      type: Number,
-      default: 5
-    },
-    autoProcessQueue: {
-      type: Boolean,
-      default: true
-    },
-    useFontAwesome: {
-      type: Boolean,
-      default: false
-    },
-    headers: {
-      type: Object
-    },
-    useCustomDropzoneOptions: {
-      type: Boolean,
-      default: false
-    },
-    dropzoneOptions: {
-      type: Object
+
+    mounted: function mounted() {
+        var element = document.getElementById(this.id);
+        if (!this.useCustomDropzoneOptions) {
+            this.dropzone = new Dropzone(element, {
+                clickable: this.clickable,
+                thumbnailWidth: this.thumbnailWidth,
+                thumbnailHeight: this.thumbnailHeight,
+                maxFiles: this.maxNumberOfFiles,
+                maxFilesize: this.maxFileSizeInMB,
+                dictRemoveFile: 'Eliminar',
+                dictCancelUpload: 'Cancelar la subida',
+                addRemoveLinks: this.showRemoveLink,
+                acceptedFiles: this.acceptedFileTypes,
+                autoProcessQueue: this.autoProcessQueue,
+                dictDefaultMessage: '<i class="fa fa-upload fa-2x" aria-hidden="true"></i><br>Haga click o arrastre hasta aca los archivos que desea subir',
+
+                previewTemplate: '<div class="dz-preview dz-file-preview">  <div class="dz-image" style="width: auto ;height: auto; margin: 0 auto"><img data-dz-thumbnail /></div>  <div class="dz-details">    <div class="dz-size"><span data-dz-size></span></div>    <div class="dz-filename"><span data-dz-name style="word-wrap: break-word"></span></div>  </div>  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>  <div class="dz-error-message"><span data-dz-errormessage></span></div>  <div class="dz-success-mark"> <i class="material-icons">Terminado</i> </div>  <div class="dz-error-mark"><i class="material-icons">error</i></div></div><br><br>'
+            });
+        } else {
+            this.dropzone = new Dropzone(element, this.dropzoneOptions);
+        }
+
+        var vm = this;
+        this.dropzone.on('addedfile', function (file) {
+            vm.$emit('vdropzone-fileAdded', file);
+        });
+
+        this.dropzone.on('removedfile', function (file) {
+            vm.$emit('vdropzone-removedFile', file);
+        });
+
+        this.dropzone.on('success', function (file, response) {
+            vm.$emit('vdropzone-success', file, response);
+        });
+
+        this.dropzone.on('error', function (file, error, xhr) {
+            vm.$emit('vdropzone-error', file, error, xhr);
+        });
     }
-  },
-  methods: {
-    removeAllFiles: function removeAllFiles() {
-      this.dropzone.removeAllFiles(true);
-    },
-    processQueue: function processQueue() {
-      this.dropzone.processQueue();
-    },
-    removeFile: function removeFile(file) {
-      this.dropzone.removeFile(file);
-    }
-  },
-  computed: {
-    cloudIcon: function cloudIcon() {
-      if (this.useFontAwesome) {
-        return '<i class="fa fa-cloud-upload"></i>';
-      } else {
-        return '<i class="material-icons">cloud_upload</i>';
-      }
-    },
-    doneIcon: function doneIcon() {
-      if (this.useFontAwesome) {
-        return '<i class="fa fa-check"></i>';
-      } else {
-        return ' <i class="material-icons">done</i>';
-      }
-    },
-    errorIcon: function errorIcon() {
-      if (this.useFontAwesome) {
-        return '<i class="fa fa-close"></i>';
-      } else {
-        return ' <i class="material-icons">error</i>';
-      }
-    }
-  },
-  mounted: function mounted() {
-    if (this.$isServer) {
-      return;
-    }
-    Dropzone.autoDiscover = false;
-    var element = document.getElementById(this.id);
-    if (!this.useCustomDropzoneOptions) {
-      this.dropzone = new Dropzone(element, {
-        clickable: this.clickable,
-        thumbnailWidth: this.thumbnailWidth,
-        thumbnailHeight: this.thumbnailHeight,
-        maxFiles: this.maxNumberOfFiles,
-        maxFilesize: this.maxFileSizeInMB,
-        dictRemoveFile: 'Remove',
-        addRemoveLinks: this.showRemoveLink,
-        acceptedFiles: this.acceptedFileTypes,
-        autoProcessQueue: this.autoProcessQueue,
-        headers: this.headers,
-        dictDefaultMessage: this.cloudIcon + '<br>Drop files here to upload',
-        previewTemplate: '<div class="dz-preview dz-file-preview">  <div class="dz-image" style="width:' + this.thumbnailWidth + 'px;height:' + this.thumbnailHeight + 'px"><img data-dz-thumbnail /></div>  <div class="dz-details">    <div class="dz-size"><span data-dz-size></span></div>    <div class="dz-filename"><span data-dz-name></span></div>  </div>  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>  <div class="dz-error-message"><span data-dz-errormessage></span></div>  <div class="dz-success-mark">' + this.doneIcon + ' </div>  <div class="dz-error-mark">' + this.errorIcon + '</div></div>'
-      });
-    } else {
-      this.dropzone = new Dropzone(element, this.dropzoneOptions);
-    }
-
-    var vm = this;
-    this.dropzone.on('thumbnail', function (file) {
-      vm.$emit('vdropzone-thumbnail', file);
-    });
-    this.dropzone.on('addedfile', function (file) {
-      vm.$emit('vdropzone-file-added', file);
-    });
-
-    this.dropzone.on('removedfile', function (file) {
-      vm.$emit('vdropzone-removed-file', file);
-    });
-
-    this.dropzone.on('success', function (file, response) {
-      vm.$emit('vdropzone-success', file, response);
-    });
-
-    this.dropzone.on('successmultiple', function (file, response) {
-      vm.$emit('vdropzone-success-multiple', file, response);
-    });
-
-    this.dropzone.on('error', function (file, error, xhr) {
-      vm.$emit('vdropzone-error', file, error, xhr);
-    });
-
-    this.dropzone.on('sending', function (file, xhr, formData) {
-      vm.$emit('vdropzone-sending', file, xhr, formData);
-    });
-
-    this.dropzone.on('sendingmultiple', function (file, xhr, formData) {
-      vm.$emit('vdropzone-sending-multiple', file, xhr, formData);
-    });
-
-    this.dropzone.on('queuecomplete', function (file, xhr, formData) {
-      vm.$emit('vdropzone-queue-complete', file, xhr, formData);
-    });
-  }
 };
 
 /***/ }),
@@ -39665,7 +39663,7 @@ exports = module.exports = __webpack_require__(14)();
 exports.i(__webpack_require__(76), "");
 
 // module
-exports.push([module.i, "\n.vue-dropzone {\n  border: 2px solid #E5E5E5;\n  font-family: 'Arial', sans-serif;\n  letter-spacing: 0.2px;\n  color: #777;\n  -webkit-transition: background-color 0.2s linear;\n  transition: background-color 0.2s linear;\n}\n.vue-dropzone:hover {\n  background-color: #F6F6F6;\n}\n.vue-dropzone i {\n  color: #CCC;\n}\n.vue-dropzone .dz-preview .dz-image {\n  border-radius: 0px;\n}\n.vue-dropzone .dz-preview .dz-image:hover img {\n  -webkit-transform: none;\n          transform: none;\n  -webkit-filter: none;\n}\n.vue-dropzone .dz-preview .dz-details {\n  bottom: 0px;\n  top: 0px;\n  color: white;\n  background-color: rgba(33, 150, 243, 0.8);\n  -webkit-transition: opacity .2s linear;\n  transition: opacity .2s linear;\n  text-align: left;\n}\n.vue-dropzone .dz-preview .dz-details .dz-filename span,\n.vue-dropzone .dz-preview .dz-details .dz-size span {\n  background-color: transparent;\n}\n.vue-dropzone .dz-preview .dz-details .dz-filename:not(:hover) span {\n  border: none;\n}\n.vue-dropzone .dz-preview .dz-details .dz-filename:hover span {\n  background-color: transparent;\n  border: none;\n}\n.vue-dropzone .dz-preview .dz-progress .dz-upload {\n  background: #cccccc;\n}\n.vue-dropzone .dz-preview .dz-remove {\n  position: absolute;\n  z-index: 30;\n  color: white;\n  margin-left: 15px;\n  padding: 10px;\n  top: inherit;\n  bottom: 15px;\n  border: 2px white solid;\n  text-decoration: none;\n  text-transform: uppercase;\n  font-size: 0.8rem;\n  font-weight: 800;\n  letter-spacing: 1.1px;\n  opacity: 0;\n}\n.vue-dropzone .dz-preview:hover .dz-remove {\n  opacity: 1;\n}\n.vue-dropzone .dz-preview .dz-success-mark,\n.vue-dropzone .dz-preview .dz-error-mark {\n  margin-left: auto!important;\n  margin-top: auto!important;\n  width: 100%!important;\n  top: 35%!important;\n  left: 0;\n}\n.vue-dropzone .dz-preview .dz-success-mark i,\n.vue-dropzone .dz-preview .dz-error-mark i {\n  color: white!important;\n  font-size: 5rem!important;\n}\n", ""]);
+exports.push([module.i, "\n.vue-dropzone {\n  border: 2px solid #E5E5E5;\n  font-family: 'Arial', sans-serif;\n  letter-spacing: 0.2px;\n  color: #777;\n  -webkit-transition: background-color 0.2s linear;\n  transition: background-color 0.2s linear;\n}\n.vue-dropzone :hover {\n  background-color: #F6F6F6;\n}\n.vue-dropzone i {\n  color: #CCC;\n}\n.vue-dropzone .dz-preview .dz-image {\n  border-radius: 0px;\n}\n.vue-dropzone .dz-preview .dz-image :hover img {\n  -webkit-transform: none;\n          transform: none;\n  -webkit-filter: none;\n}\n.vue-dropzone .dz-preview .dz-details {\n  bottom: 0px;\n  top: 0px;\n  color: white;\n  background-color: rgba(33, 150, 243, 0.8);\n  -webkit-transition: opacity .2s linear;\n  transition: opacity .2s linear;\n  text-align: left;\n}\n.vue-dropzone .dz-preview .dz-details .dz-filename span,\n.vue-dropzone .dz-preview .dz-details .dz-size span {\n  background-color: transparent;\n}\n.vue-dropzone .dz-preview .dz-details .dz-filename:not(:hover) span {\n  border: none;\n}\n.vue-dropzone .dz-preview .dz-details .dz-filename:hover span {\n  background-color: transparent;\n  border: none;\n}\n.vue-dropzone .dz-preview .dz-progress .dz-upload {\n  background: #cccccc;\n}\n.vue-dropzone .dz-preview .dz-remove {\n  position: absolute;\n  z-index: 30;\n  color: white;\n  margin-left: 15px;\n  padding: 10px;\n  top: inherit;\n  bottom: 15px;\n  border: 2px white solid;\n  text-decoration: none;\n  text-transform: uppercase;\n  font-size: 0.8rem;\n  font-weight: 800;\n  letter-spacing: 1.1px;\n  opacity: 0;\n}\n.vue-dropzone .dz-preview :hover .dz-remove {\n  opacity: 1;\n}\n.vue-dropzone .dz-preview .dz-success-mark,\n.vue-dropzone .dz-preview .dz-error-mark {\n  margin-left: auto !important;\n  margin-top: auto !important;\n  width: 100% !important;\n  top: 35% !important;\n  left: 0;\n}\n.vue-dropzone .dz-preview .dz-success-mark i,\n.vue-dropzone .dz-preview .dz-error-mark i {\n  color: white !important;\n  font-size: 5rem !important;\n}\n", ""]);
 
 // exports
 
@@ -41696,8 +41694,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../node_modules/css-loader/index.js!./../../vue-loader/lib/style-rewriter.js?id=data-v-91a93950!./../node_modules/less-loader/index.js!./../../vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
-			var newContent = require("!!./../node_modules/css-loader/index.js!./../../vue-loader/lib/style-rewriter.js?id=data-v-91a93950!./../node_modules/less-loader/index.js!./../../vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
+		module.hot.accept("!!./../node_modules/css-loader/index.js!./../../vue-loader/lib/style-rewriter.js?id=data-v-91a93950!./../../less-loader/index.js!./../../vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
+			var newContent = require("!!./../node_modules/css-loader/index.js!./../../vue-loader/lib/style-rewriter.js?id=data-v-91a93950!./../../less-loader/index.js!./../../vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -50295,6 +50293,155 @@ module.exports = Vue$3;
 __webpack_require__(16);
 module.exports = __webpack_require__(17);
 
+
+/***/ }),
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    data: function data() {
+        return {
+            msg: 'Hello world!'
+        };
+    }
+};
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.example {\n    color: red;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(94)
+
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(90),
+  /* template */
+  __webpack_require__(93),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\xampp\\htdocs\\pae\\resources\\assets\\js\\components\\super\\modulos\\estadoAsignaciones.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] estadoAsignaciones.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-08e4c8be", Component.options)
+  } else {
+    hotAPI.reload("data-v-08e4c8be", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: "container"
+  }, [_c('br'), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-xs-12 col-sm-12 col-md-12 col-lg-12"
+  }, [_c('p', {
+    staticClass: "example"
+  }, [_vm._v("\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam,\n                    consectetur\n                    deleniti dolore\n                    eveniet expedita hic iste, modi nulla quod, rerum voluptas! Alias aliquam animi blanditiis\n                    minima\n                    nesciunt optio tempore.\n                ")])])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-08e4c8be", module.exports)
+  }
+}
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(91);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(6)("eb3613ca", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-08e4c8be!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./estadoAsignaciones.vue", function() {
+     var newContent = require("!!./../../../../../../node_modules/css-loader/index.js!./../../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-08e4c8be!./../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./estadoAsignaciones.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);

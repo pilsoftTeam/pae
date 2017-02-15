@@ -29,7 +29,7 @@
             <div class="col-xs-18 col-sm-9 col-md-9 col-lg-9">
                 <div v-for="element in checklist">
                     <div class="row" v-for="(items ,key) in element.get_items">
-                        <div v-if="key == showItems">
+                        <div v-if="items.id == showItems">
                             <div>
 
                                 <div class="panel panel-default">
@@ -85,7 +85,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Observacion
-                                                                                                escrita</label>
+                                                                                            escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -95,7 +95,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Subir
-                                                                                                archivos</label>
+                                                                                            archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
@@ -127,7 +127,8 @@
                                                                                                 verificadores</b>
                                                                                         </h5>
                                                                                         <hr>
-                                                                                        <p class="text-center">
+                                                                                        <p class="text-center"
+                                                                                           v-if="evaluaciones.documentosVerificadores">
                                                                                             <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
                                                                                                 <li class="list-group-item">{{item}}</li>
                                                                                             </span>
@@ -176,7 +177,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Observacion
-                                                                                                escrita</label>
+                                                                                            escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -186,7 +187,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Subir
-                                                                                                archivos</label>
+                                                                                            archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
@@ -218,7 +219,8 @@
                                                                                                 verificadores</b>
                                                                                         </h5>
                                                                                         <hr>
-                                                                                        <p class="text-center">
+                                                                                        <p class="text-center"
+                                                                                           v-if="evaluaciones.documentosVerificadores">
                                                                                             <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
                                                                                                 <li class="list-group-item">{{item}}</li>
                                                                                             </span>
@@ -266,7 +268,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Observacion
-                                                                                                escrita</label>
+                                                                                            escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -276,7 +278,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Subir
-                                                                                                archivos</label>
+                                                                                            archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
@@ -308,7 +310,8 @@
                                                                                                 verificadores</b>
                                                                                         </h5>
                                                                                         <hr>
-                                                                                        <p class="text-center">
+                                                                                        <p class="text-center"
+                                                                                           v-if="evaluaciones.documentosVerificadores">
                                                                                             <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
                                                                                                 <li class="list-group-item">{{item}}</li>
                                                                                             </span>
@@ -365,7 +368,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Observacion
-                                                                                                escrita</label>
+                                                                                            escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -375,7 +378,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Subir
-                                                                                                archivos</label>
+                                                                                            archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
@@ -407,7 +410,8 @@
                                                                                                 verificadores</b>
                                                                                         </h5>
                                                                                         <hr>
-                                                                                        <p class="text-center">
+                                                                                        <p class="text-center"
+                                                                                           v-if="evaluaciones.documentosVerificadores">
                                                                                             <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
                                                                                                 <li class="list-group-item">{{item}}</li>
                                                                                             </span>
@@ -455,7 +459,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Observacion
-                                                                                                escrita</label>
+                                                                                            escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -465,7 +469,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Subir
-                                                                                                archivos</label>
+                                                                                            archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
@@ -497,7 +501,8 @@
                                                                                                 verificadores</b>
                                                                                         </h5>
                                                                                         <hr>
-                                                                                        <p class="text-center">
+                                                                                        <p class="text-center"
+                                                                                           v-if="evaluaciones.documentosVerificadores">
                                                                                             <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
                                                                                                 <li class="list-group-item">{{item}}</li>
                                                                                             </span>
@@ -572,7 +577,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Observacion
-                                                                                                escrita</label>
+                                                                                            escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -582,7 +587,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Subir
-                                                                                                archivos</label>
+                                                                                            archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
@@ -614,7 +619,9 @@
                                                                                                 verificadores</b>
                                                                                         </h5>
                                                                                         <hr>
-                                                                                        <p class="text-center">
+                                                                                        s
+                                                                                        <p class="text-center"
+                                                                                           v-if="evaluaciones.documentosVerificadores">
                                                                                             <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
                                                                                                 <li class="list-group-item">{{item}}</li>
                                                                                             </span>
@@ -663,7 +670,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Observacion
-                                                                                                escrita</label>
+                                                                                            escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -673,7 +680,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Subir
-                                                                                                archivos</label>
+                                                                                            archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
@@ -705,7 +712,8 @@
                                                                                                 verificadores</b>
                                                                                         </h5>
                                                                                         <hr>
-                                                                                        <p class="text-center">
+                                                                                        <p class="text-center"
+                                                                                           v-if="evaluaciones.documentosVerificadores">
                                                                                             <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
                                                                                                 <li class="list-group-item">{{item}}</li>
                                                                                             </span>
@@ -753,7 +761,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Observacion
-                                                                                                escrita</label>
+                                                                                            escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -763,7 +771,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Subir
-                                                                                                archivos</label>
+                                                                                            archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
@@ -795,7 +803,8 @@
                                                                                                 verificadores</b>
                                                                                         </h5>
                                                                                         <hr>
-                                                                                        <p class="text-center">
+                                                                                        <p class="text-center"
+                                                                                           v-if="evaluaciones.documentosVerificadores">
                                                                                             <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
                                                                                                 <li class="list-group-item">{{item}}</li>
                                                                                             </span>
@@ -853,7 +862,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Observacion
-                                                                                                escrita</label>
+                                                                                            escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -863,7 +872,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Subir
-                                                                                                archivos</label>
+                                                                                            archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
@@ -895,7 +904,8 @@
                                                                                                 verificadores</b>
                                                                                         </h5>
                                                                                         <hr>
-                                                                                        <p class="text-center">
+                                                                                        <p class="text-center"
+                                                                                           v-if="evaluaciones.documentosVerificadores">
                                                                                             <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
                                                                                                 <li class="list-group-item">{{item}}</li>
                                                                                             </span>
@@ -947,7 +957,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Observacion
-                                                                                                escrita</label>
+                                                                                            escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -957,7 +967,7 @@
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
                                                                                             <label class="control-label">Subir
-                                                                                                archivos</label>
+                                                                                            archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
@@ -989,7 +999,8 @@
                                                                                                 verificadores</b>
                                                                                         </h5>
                                                                                         <hr>
-                                                                                        <p class="text-center">
+                                                                                        <p class="text-center"
+                                                                                           v-if="evaluaciones.documentosVerificadores">
                                                                                             <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
                                                                                                 <li class="list-group-item">{{item}}</li>
                                                                                             </span>
@@ -1020,15 +1031,15 @@
             </div>
 
             <br>
-            <button type="button" class="btn btn-success btn-block btn-lg" v-if="showEnd">
+            <button type="button" class="btn btn-success btn-block btn-lg" @click="end">
                 Terminar evaluacion
             </button>
             <br>
         </div>
 
         <div class="modal fade" id="endChecklistModal">
-            <div class="modal-dialog">
-                <div class="modal-content modal-sm">
+            <div class="modal-dialog modal-xs">
+                <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title">El checklist ha sido terminado. </h4>
@@ -1125,15 +1136,57 @@
 
 
             showItem(id){
-                this.showItems = id - 1;
+                this.showItems = id;
             },
             showSuccess(){
             },
 
 
             end(){
+                let self = this;
+                let evaluacion = self.checklist;
+                let item = [];
+
+                _.forEach(evaluacion, e => {
 
 
+                    let obj = {
+                        idEvaluacion: '',
+                        idItem: '',
+                        idAgrupacion: '',
+                        valorInput: '',
+                        valorObservacion: '',
+                    };
+
+
+                    _.forEach(e.get_items, i => {
+
+                        if (i.get_agrupaciones.length > 0) {
+
+                            _.forEach(i.get_agrupaciones, a => {
+
+                                _.forEach(a.get_evaluaciones, s => {
+                                    console.log(s)
+                                });
+
+                            });
+
+
+                        }
+
+
+                    });
+
+
+                    console.log()
+                });
+
+
+                //axios.post('api/end/checklist').then(r => {
+                //    console.log(r.data)
+                //}).catch(e => {
+                //    console.log(e)
+                //})
             }
 
         },
