@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Etapas;
 use App\Evaluaciones;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -101,7 +102,7 @@ class EvaluacionesController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 
 
@@ -109,20 +110,24 @@ class EvaluacionesController extends Controller
     {
 
 
+        $idAgrupacion = Evaluaciones::where('id', $request->idPregunta)->value('idEtapa');
+        $idItem = Evaluaciones::where('id', $request->idPregunta)->value('idEtapa');
+
+
+        $ruta = $request->idBodega . '/' . $request->idChecklist . '/' . $idItem . '/' . $request->idPregunta;
+
+        if ($idAgrupacion) {
+            $ruta = $request->idBodega . '/' . $request->idChecklist . '/' . $idItem . '/' . $idAgrupacion . '/' . $request->idPregunta;
+        }
+
+
         foreach ($request->documentos as $item) {
             $fileName = $item->getClientOriginalName();
-            $item->storeAs('/', $fileName);
-        }
-
-        $a = [];
-
-
-        foreach ($request->revision as $index => $item) {
-            array_push($a, $item);
+            $item->storeAs($ruta, $fileName);
         }
 
 
-        return response()->json($a);
+        return response()->json(200);
 
     }
 }

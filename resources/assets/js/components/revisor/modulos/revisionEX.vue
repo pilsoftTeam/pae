@@ -69,6 +69,7 @@
                                                                         <div class="panel-heading">
                                                                             <h4 class="panel-title">
                                                                                 <a data-toggle="collapse"
+                                                                                   @click="options.params.idPregunta = evaluaciones.id"
                                                                                    data-parent="#accordion"
                                                                                    :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
                                                                                 >Subir adjuntos / Aspectos evaluativos ,
@@ -83,7 +84,8 @@
                                                                                 <div class="row">
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <label class="control-label">Observacion
+                                                                                                escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -92,17 +94,19 @@
                                                                                     </div>
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <label class="control-label">Subir
+                                                                                                archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
                                                                                                     :thumbnailHeight="100"
                                                                                                     :maxFileSizeInMB="10"
                                                                                                     :maxNumberOfFiles="99"
-                                                                                                    url="https://httpbin.org/post"
+                                                                                                    url="//localhost/pae/public/api/get/files"
+                                                                                                    :dropzone-options="options"
+                                                                                                    :use-custom-dropzone-options="true"
                                                                                                     v-on:vdropzone-success="showSuccess"
                                                                                                     :useFontAwesome="true">
-
                                                                                             </file-upload>
                                                                                         </div>
 
@@ -156,6 +160,7 @@
                                                                         <div class="panel-heading">
                                                                             <h4 class="panel-title">
                                                                                 <a data-toggle="collapse"
+                                                                                   @click="options.params.idPregunta = evaluaciones.id"
                                                                                    data-parent="#accordion"
                                                                                    :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
                                                                                 >Subir adjuntos / Aspectos evaluativos ,
@@ -170,7 +175,8 @@
                                                                                 <div class="row">
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <label class="control-label">Observacion
+                                                                                                escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -179,17 +185,19 @@
                                                                                     </div>
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <label class="control-label">Subir
+                                                                                                archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
                                                                                                     :thumbnailHeight="100"
                                                                                                     :maxFileSizeInMB="10"
                                                                                                     :maxNumberOfFiles="99"
-                                                                                                    url="https://httpbin.org/post"
+                                                                                                    url="//localhost/pae/public/api/get/files"
+                                                                                                    :dropzone-options="options"
+                                                                                                    :use-custom-dropzone-options="true"
                                                                                                     v-on:vdropzone-success="showSuccess"
                                                                                                     :useFontAwesome="true">
-
                                                                                             </file-upload>
                                                                                         </div>
 
@@ -242,6 +250,7 @@
                                                                         <div class="panel-heading">
                                                                             <h4 class="panel-title">
                                                                                 <a data-toggle="collapse"
+                                                                                   @click="options.params.idPregunta = evaluaciones.id"
                                                                                    data-parent="#accordion"
                                                                                    :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
                                                                                 >Subir adjuntos / Aspectos evaluativos ,
@@ -256,7 +265,8 @@
                                                                                 <div class="row">
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <label class="control-label">Observacion
+                                                                                                escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -265,17 +275,19 @@
                                                                                     </div>
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <label class="control-label">Subir
+                                                                                                archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
                                                                                                     :thumbnailHeight="100"
                                                                                                     :maxFileSizeInMB="10"
                                                                                                     :maxNumberOfFiles="99"
-                                                                                                    url="https://httpbin.org/post"
+                                                                                                    url="//localhost/pae/public/api/get/files"
+                                                                                                    :dropzone-options="options"
+                                                                                                    :use-custom-dropzone-options="true"
                                                                                                     v-on:vdropzone-success="showSuccess"
                                                                                                     :useFontAwesome="true">
-
                                                                                             </file-upload>
                                                                                         </div>
 
@@ -337,6 +349,7 @@
                                                                         <div class="panel-heading">
                                                                             <h4 class="panel-title">
                                                                                 <a data-toggle="collapse"
+                                                                                   @click="options.params.idPregunta = evaluaciones.id"
                                                                                    data-parent="#accordion"
                                                                                    :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
                                                                                 >Subir adjuntos / Aspectos evaluativos ,
@@ -351,7 +364,8 @@
                                                                                 <div class="row">
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <label class="control-label">Observacion
+                                                                                                escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -360,17 +374,19 @@
                                                                                     </div>
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <label class="control-label">Subir
+                                                                                                archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
                                                                                                     :thumbnailHeight="100"
                                                                                                     :maxFileSizeInMB="10"
                                                                                                     :maxNumberOfFiles="99"
-                                                                                                    url="https://httpbin.org/post"
+                                                                                                    url="//localhost/pae/public/api/get/files"
+                                                                                                    :dropzone-options="options"
+                                                                                                    :use-custom-dropzone-options="true"
                                                                                                     v-on:vdropzone-success="showSuccess"
                                                                                                     :useFontAwesome="true">
-
                                                                                             </file-upload>
                                                                                         </div>
 
@@ -423,6 +439,7 @@
                                                                         <div class="panel-heading">
                                                                             <h4 class="panel-title">
                                                                                 <a data-toggle="collapse"
+                                                                                   @click="options.params.idPregunta = evaluaciones.id"
                                                                                    data-parent="#accordion"
                                                                                    :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
                                                                                 >Subir adjuntos / Aspectos evaluativos ,
@@ -437,7 +454,8 @@
                                                                                 <div class="row">
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <label class="control-label">Observacion
+                                                                                                escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -446,17 +464,19 @@
                                                                                     </div>
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <label class="control-label">Subir
+                                                                                                archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
                                                                                                     :thumbnailHeight="100"
                                                                                                     :maxFileSizeInMB="10"
                                                                                                     :maxNumberOfFiles="99"
-                                                                                                    url="https://httpbin.org/post"
+                                                                                                    url="//localhost/pae/public/api/get/files"
+                                                                                                    :dropzone-options="options"
+                                                                                                    :use-custom-dropzone-options="true"
                                                                                                     v-on:vdropzone-success="showSuccess"
                                                                                                     :useFontAwesome="true">
-
                                                                                             </file-upload>
                                                                                         </div>
 
@@ -531,20 +551,84 @@
                                                             <div class="row"
                                                                  v-if="evaluaciones.observacionDocumental
                                                                  || evaluaciones.observacionEscrita == 1">
-                                                                <a data-toggle="collapse" data-parent="#accordion"
-                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/\s/g,''))">
-                                                                    Collapsible Group 1</a>
-                                                                <div :id="evaluaciones.nombreEvaluacion.replace(/\s/g,'')"
-                                                                     class="panel-collapse collapse in">
-                                                                    <div class="panel-body">Lorem ipsum dolor sit amet,
-                                                                        consectetur adipisicing elit,
-                                                                        sed do eiusmod tempor incididunt ut labore et
-                                                                        dolore magna aliqua. Ut enim ad
-                                                                        minim veniam, quis nostrud exercitation ullamco
-                                                                        laboris nisi ut aliquip ex ea
-                                                                        commodo consequat.
+                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                                    <div class="panel panel-warning">
+                                                                        <div class="panel-heading">
+                                                                            <h4 class="panel-title">
+                                                                                <a data-toggle="collapse"
+                                                                                   @click="options.params.idPregunta = evaluaciones.id"
+                                                                                   data-parent="#accordion"
+                                                                                   :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
+                                                                                >Subir adjuntos / Aspectos evaluativos ,
+                                                                                    Documentos requeridos</a>
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div :id="evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_')"
+                                                                             class="panel-collapse collapse">
+                                                                            <div class="panel-body">
+
+
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Observacion
+                                                                                                escrita</label>
+                                                                                            <textarea
+                                                                                                    class="form-control"
+                                                                                                    v-model="evaluaciones.observacionEscritaValue"
+                                                                                            ></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label">Subir
+                                                                                                archivos</label>
+                                                                                            <file-upload
+                                                                                                    :id="'myVueDropzone'+evaluaciones.id"
+                                                                                                    :thumbnailWidth="300"
+                                                                                                    :thumbnailHeight="100"
+                                                                                                    :maxFileSizeInMB="10"
+                                                                                                    :maxNumberOfFiles="99"
+                                                                                                    url="//localhost/pae/public/api/get/files"
+                                                                                                    :dropzone-options="options"
+                                                                                                    :use-custom-dropzone-options="true"
+                                                                                                    v-on:vdropzone-success="showSuccess"
+                                                                                                    :useFontAwesome="true">
+                                                                                            </file-upload>
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Aspectos evaluativos</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            {{evaluaciones.aspectoEvaluativo}}
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                                                        <h5 class="text-center">
+                                                                                            <b>Documentos
+                                                                                                verificadores</b>
+                                                                                        </h5>
+                                                                                        <hr>
+                                                                                        <p class="text-center">
+                                                                                            <span v-for="item in evaluaciones.documentosVerificadores.split(',')">
+                                                                                                <li class="list-group-item">{{item}}</li>
+                                                                                            </span>
+                                                                                        </p>
+                                                                                    </div>
+
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
 
                                                             </div>
                                                         </div>
@@ -563,6 +647,7 @@
                                                                         <div class="panel-heading">
                                                                             <h4 class="panel-title">
                                                                                 <a data-toggle="collapse"
+                                                                                   @click="options.params.idPregunta = evaluaciones.id"
                                                                                    data-parent="#accordion"
                                                                                    :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
                                                                                 >Subir adjuntos / Aspectos evaluativos ,
@@ -577,7 +662,8 @@
                                                                                 <div class="row">
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <label class="control-label">Observacion
+                                                                                                escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -586,17 +672,19 @@
                                                                                     </div>
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <label class="control-label">Subir
+                                                                                                archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
                                                                                                     :thumbnailHeight="100"
                                                                                                     :maxFileSizeInMB="10"
                                                                                                     :maxNumberOfFiles="99"
-                                                                                                    url="https://httpbin.org/post"
+                                                                                                    url="//localhost/pae/public/api/get/files"
+                                                                                                    :dropzone-options="options"
+                                                                                                    :use-custom-dropzone-options="true"
                                                                                                     v-on:vdropzone-success="showSuccess"
                                                                                                     :useFontAwesome="true">
-
                                                                                             </file-upload>
                                                                                         </div>
 
@@ -649,6 +737,7 @@
                                                                         <div class="panel-heading">
                                                                             <h4 class="panel-title">
                                                                                 <a data-toggle="collapse"
+                                                                                   @click="options.params.idPregunta = evaluaciones.id"
                                                                                    data-parent="#accordion"
                                                                                    :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
                                                                                 >Subir adjuntos / Aspectos evaluativos ,
@@ -663,7 +752,8 @@
                                                                                 <div class="row">
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <label class="control-label">Observacion
+                                                                                                escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -672,17 +762,19 @@
                                                                                     </div>
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <label class="control-label">Subir
+                                                                                                archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
                                                                                                     :thumbnailHeight="100"
                                                                                                     :maxFileSizeInMB="10"
                                                                                                     :maxNumberOfFiles="99"
-                                                                                                    url="https://httpbin.org/post"
+                                                                                                    url="//localhost/pae/public/api/get/files"
+                                                                                                    :dropzone-options="options"
+                                                                                                    :use-custom-dropzone-options="true"
                                                                                                     v-on:vdropzone-success="showSuccess"
                                                                                                     :useFontAwesome="true">
-
                                                                                             </file-upload>
                                                                                         </div>
 
@@ -745,6 +837,7 @@
                                                                         <div class="panel-heading">
                                                                             <h4 class="panel-title">
                                                                                 <a data-toggle="collapse"
+                                                                                   @click="options.params.idPregunta = evaluaciones.id"
                                                                                    data-parent="#accordion"
                                                                                    :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
                                                                                 >Subir adjuntos / Aspectos evaluativos ,
@@ -759,7 +852,8 @@
                                                                                 <div class="row">
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <label class="control-label">Observacion
+                                                                                                escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -768,19 +862,19 @@
                                                                                     </div>
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <label class="control-label">Subir
+                                                                                                archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
                                                                                                     :thumbnailHeight="100"
                                                                                                     :maxFileSizeInMB="10"
                                                                                                     :maxNumberOfFiles="99"
-                                                                                                    url="//localhost/PAE_PRUEBA/public/api/get/files"
+                                                                                                    url="//localhost/pae/public/api/get/files"
                                                                                                     :dropzone-options="options"
                                                                                                     :use-custom-dropzone-options="true"
                                                                                                     v-on:vdropzone-success="showSuccess"
                                                                                                     :useFontAwesome="true">
-
                                                                                             </file-upload>
                                                                                         </div>
 
@@ -837,6 +931,7 @@
                                                                         <div class="panel-heading">
                                                                             <h4 class="panel-title">
                                                                                 <a data-toggle="collapse"
+                                                                                   @click="options.params.idPregunta = evaluaciones.id"
                                                                                    data-parent="#accordion"
                                                                                    :href="'#'+(evaluaciones.nombreEvaluacion.replace(/[^a-zA-Z0-9]/g,'_'))"
                                                                                 >Subir adjuntos / Aspectos evaluativos ,
@@ -851,7 +946,8 @@
                                                                                 <div class="row">
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Observacion escrita</label>
+                                                                                            <label class="control-label">Observacion
+                                                                                                escrita</label>
                                                                                             <textarea
                                                                                                     class="form-control"
                                                                                                     v-model="evaluaciones.observacionEscritaValue"
@@ -860,17 +956,19 @@
                                                                                     </div>
                                                                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6 uploadSize">
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label">Subir archivos</label>
+                                                                                            <label class="control-label">Subir
+                                                                                                archivos</label>
                                                                                             <file-upload
                                                                                                     :id="'myVueDropzone'+evaluaciones.id"
                                                                                                     :thumbnailWidth="300"
                                                                                                     :thumbnailHeight="100"
                                                                                                     :maxFileSizeInMB="10"
                                                                                                     :maxNumberOfFiles="99"
-                                                                                                    url="https://httpbin.org/post"
+                                                                                                    url="//localhost/pae/public/api/get/files"
+                                                                                                    :dropzone-options="options"
+                                                                                                    :use-custom-dropzone-options="true"
                                                                                                     v-on:vdropzone-success="showSuccess"
                                                                                                     :useFontAwesome="true">
-
                                                                                             </file-upload>
                                                                                         </div>
 
@@ -920,6 +1018,12 @@
                     </div>
                 </div>
             </div>
+
+            <br>
+            <button type="button" class="btn btn-success btn-block btn-lg" v-if="showEnd">
+                Terminar evaluacion
+            </button>
+            <br>
         </div>
 
         <div class="modal fade" id="endChecklistModal">
@@ -950,7 +1054,6 @@
     export default {
         mounted() {
             this.getChecklist();
-            this.destructure();
         },
         props: {
             revision: Object
@@ -980,11 +1083,15 @@
                     paramName: 'documentos',
                     previewTemplate: '<div class="dz-preview dz-file-preview">  <div class="dz-image" style="width:' + this.thumbnailWidth + 'px;height:' + this.thumbnailHeight + 'px"><img data-dz-thumbnail /></div>  <div class="dz-details">    <div class="dz-size"><span data-dz-size></span></div>    <div class="dz-filename"><span data-dz-name></span></div>  </div>  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>  <div class="dz-error-message"><span data-dz-errormessage></span></div>  <div class="dz-success-mark"><i class="fa fa-check fa-3x"></i> </div>  <div class="dz-error-mark"><i class="fa fa-close fa-3x"></i></div></div>',
                     params: {
-                        revision: this.revision
+                        idPregunta: '',
+                        idChecklist: this.revision.idChecklist,
+                        idBodega: this.revision.idBodega
+
                     }
 
 
                 },
+                showEnd: false,
 
             }
         },
@@ -1011,13 +1118,6 @@
                 })
             },
 
-            destructure(){
-                let arr = this.revision;
-
-                _.forEach(arr, i => {
-                    console.log(i);
-                })
-            },
 
             saveChecklist(){
                 $('#endChecklistModal').modal('show');
@@ -1027,10 +1127,15 @@
             showItem(id){
                 this.showItems = id - 1;
             },
-            showSuccess(el, a){
-                console.log(el);
-                console.log(a)
+            showSuccess(){
+            },
+
+
+            end(){
+
+
             }
+
         },
         computed: {},
         components: {
