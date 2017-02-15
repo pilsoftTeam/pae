@@ -3,30 +3,50 @@
         <div class="container">
             <br>
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <p class="example">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam,
-                        consectetur
-                        deleniti dolore
-                        eveniet expedita hic iste, modi nulla quod, rerum voluptas! Alias aliquam animi blanditiis
-                        minima
-                        nesciunt optio tempore.
-                    </p>
+                <div class="col-xs-18 col-sm-12 col-md-12 col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table class="table table-hover table-responsive table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Nombre Proveedor</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="bodega in bodegas">
+                                    <td>{{bodega}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
-<style>
-    .example {
-        color: red;
-    }
-</style>
 <script>
     export default {
-        data () {
+
+        mounted(){
+            this.getBodegas();
+        },
+        data()
+        {
             return {
-                msg: 'Hello world!'
+                bodegas: ''
+            }
+        }
+        ,
+
+        methods: {
+            getBodegas()
+            {
+                axios.get('api/bodegas/all').then(r => {
+                    this.bodegas = r.data;
+                }).catch(e => {
+                    console.log(e)
+                })
             }
         }
     }
