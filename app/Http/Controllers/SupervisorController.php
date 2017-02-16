@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Asignaciones;
+use App\Checklist;
+use App\Resultados;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,6 +18,20 @@ class SupervisorController extends Controller
     public function index()
     {
         //
+    }
+
+    public function getState()
+    {
+        $asignaciones = Asignaciones::with('getChecklistName', 'getBodegaInfo', 'getRevisor', 'getSuper')->get();
+
+        return response()->json($asignaciones, 200);
+    }
+
+    public function getAsignacion($id)
+    {
+        $resultados = Resultados::where('idAsignacion', $id)->with('getEvaluaciones')->get();
+
+        return response()->json($resultados, 200);
     }
 
     /**
@@ -35,10 +51,15 @@ class SupervisorController extends Controller
         $asignacion->save();
 
 
-
         return response()->json(200);
     }
 
+    public function getChecklist($id)
+    {
+        $checklist = Checklist::where('id', $id)->with('getItemsWithRespuestas')->get();
+
+        return response()->json($checklist, 200);
+    }
 
 
     /**

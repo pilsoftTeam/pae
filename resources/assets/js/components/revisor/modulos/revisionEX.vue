@@ -240,8 +240,9 @@
                                                         </div>
                                                         <div v-if="evaluaciones.tipo === 'fecha'">
                                                             <input type="number"
-                                                                   name="name"
-                                                                   class="form-control"
+                                                                   @click="activateDate"
+                                                                   name="text"
+                                                                   class="form-control datePicker"
                                                                    v-model="evaluaciones.value">
                                                             <hr>
                                                             <div class="row"
@@ -732,9 +733,9 @@
                                                             </div>
                                                         </div>
                                                         <div v-if="evaluaciones.tipo === 'fecha'">
-                                                            <input type="number"
+                                                            <input type="text"
                                                                    name="name"
-                                                                   class="form-control"
+                                                                   class="form-control datePicker"
                                                                    v-model="evaluaciones.value">
                                                             <hr>
                                                             <div class="row"
@@ -885,6 +886,8 @@
                                                                                                     v-on:vdropzone-success="showSuccess"
                                                                                                     :useFontAwesome="true">
                                                                                             </file-upload>
+                                                                                            <input type="hidden"
+                                                                                                   :v-model="evaluaciones.rutaDocumentos = ruta">
                                                                                         </div>
 
                                                                                     </div>
@@ -1045,11 +1048,10 @@
                         <h4 class="modal-title">El checklist ha sido terminado. </h4>
                     </div>
                     <div class="modal-body">
-                        El checklist ha sido terminado
+                        El checklist ha sido terminado. Haga click en aceptar para terminar
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Aceptar</button>
+                        <button type="button" class="btn btn-primary" onclick="location.reload()">Aceptar</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -1061,10 +1063,14 @@
 </style>
 <script>
     import _ from 'lodash'
+    import 'flatpickr'
+    import 'flatpickr/dist/flatpickr.min.css'
+    import {es} from  'flatpickr/dist/l10n/es'
     import Dropzone from 'vue2-dropzone/src/index.vue'
     export default {
         mounted() {
             this.getChecklist();
+
         },
         props: {
             revision: Object
@@ -1097,12 +1103,12 @@
                         idPregunta: '',
                         idChecklist: this.revision.idChecklist,
                         idBodega: this.revision.idBodega
-
                     }
 
 
                 },
                 showEnd: false,
+                ruta: '',
 
             }
         },
@@ -1126,7 +1132,9 @@
                     })
                 }).catch(e => {
                     console.log(e)
-                })
+                });
+
+
             },
 
 
@@ -1136,9 +1144,29 @@
 
 
             showItem(id){
+
                 this.showItems = id;
+
             },
-            showSuccess(){
+            activateDate(){
+
+                $(".datePicker").flatpickr({
+                    locale: es,
+                    enableTime: true,
+                    altInput: true,
+                    altFormat: "D j F Y, h:i K",
+                });
+                $(".timePicker").flatpickr({
+                    locale: es,
+                    enableTime: true,
+                    altInput: true,
+                    noCalendar: true,
+                    altFormat: "D j F Y, h:i K",
+                });
+            },
+
+            showSuccess(el){
+                this.ruta = el.xhr.response
             },
 
 
@@ -1149,16 +1177,6 @@
 
                 _.forEach(evaluacion, e => {
 
-
-                    let obj = {
-                        idEvaluacion: '',
-                        idItem: '',
-                        idAgrupacion: '',
-                        valorInput: '',
-                        valorObservacion: '',
-                    };
-
-
                     _.forEach(e.get_items, i => {
 
                         if (i.get_agrupaciones.length > 0) {
@@ -1166,27 +1184,61 @@
                             _.forEach(i.get_agrupaciones, a => {
 
                                 _.forEach(a.get_evaluaciones, s => {
-                                    console.log(s)
+
+                                    let obj = {
+                                        idAsignacion: '',
+                                        idEvaluacion: '',
+                                        idItem: '',
+                                        idAgrupacion: '',
+                                        valorInput: '',
+                                        valorObservacion: '',
+                                    };
+                                    obj.idAsignacion = self.revision.id;
+                                    obj.idEvaluacion = s.id;
+                                    obj.idItem = s.idItem;
+                                    obj.idAgrupacion = s.idEtapa;
+                                    obj.valorInput = s.value;
+                                    obj.valorObservacion = s.observacionEscritaValue;
+                                    item.push(obj);
                                 });
 
                             });
+                        }
+                        if (i.get_evaluaciones.length > 0) {
+                            _.forEach(i.get_evaluaciones, s => {
 
-
+                                let obj = {
+                                    idAsignacion: '',
+                                    idEvaluacion: '',
+                                    idItem: '',
+                                    idAgrupacion: '',
+                                    valorInput: false,
+                                    valorObservacion: false,
+                                };
+                                obj.idAsignacion = self.revision.id
+                                obj.idEvaluacion = s.id;
+                                obj.idItem = s.idItem;
+                                obj.idAgrupacion = s.idEtapa;
+                                obj.valorInput = s.value;
+                                obj.valorObservacion = s.observacionEscritaValue;
+                                item.push(obj);
+                            });
                         }
 
 
                     });
 
 
-                    console.log()
                 });
 
 
-                //axios.post('api/end/checklist').then(r => {
-                //    console.log(r.data)
-                //}).catch(e => {
-                //    console.log(e)
-                //})
+                axios.post('api/end/checklist', item).then(r => {
+                    $('#endChecklistModal').modal('show');
+
+                }).catch(e => {
+                    console.log(e)
+                })
+
             }
 
         },

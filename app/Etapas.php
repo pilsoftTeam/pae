@@ -11,6 +11,6 @@ class Etapas extends Model
 
     public function getEvaluaciones()
     {
-        return $this->hasMany('App\Evaluaciones', 'idEtapa', 'id')->with('getOpciones');
+        return $this->hasMany('App\Evaluaciones', 'idEtapa', 'id')->with('getOpciones', 'getRespuestas');
     }
 }

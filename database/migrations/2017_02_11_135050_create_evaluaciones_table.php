@@ -16,15 +16,15 @@ class CreateEvaluacionesTable extends Migration
         Schema::create('evaluaciones', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('nombreEvaluacion');
+            $table->longText('nombreEvaluacion');
             $table->unsignedInteger('idItem');
             $table->foreign('idItem')->references('id')->on('items');
             $table->unsignedInteger('idEtapa')->nullable();
             $table->foreign('idEtapa')->references('id')->on('etapas');
             $table->unsignedInteger('idOpcionCumplimiento')->nullable();
             $table->foreign('idOpcionCumplimiento')->references('id')->on('estados_cumplimientos');
-            $table->string('tipo');
-            $table->string('criticidad')->nullable();
+            $table->longText('tipo');
+            $table->longText('criticidad')->nullable();
             $table->longText('documentosVerificadores')->nullable();
             $table->longText('aspectoEvaluativo')->nullable();
             $table->boolean('observacionEscrita')->default(false);

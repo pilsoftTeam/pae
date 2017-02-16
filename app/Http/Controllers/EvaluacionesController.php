@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Asignaciones;
 use App\Etapas;
 use App\Evaluaciones;
+use App\Resultados;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -127,12 +129,36 @@ class EvaluacionesController extends Controller
         }
 
 
-        return response()->json(200);
+        return response()->json($ruta, 200);
 
     }
 
     public function end(Request $request)
     {
-        return response()->json($request->all());
+        foreach ($request->all() as $item) {
+
+            $resultados = new Resultados();
+
+
+            $resultados->idAsignacion = $item['idAsignacion'];
+            $resultados->idItem = $item['idItem'];
+            $resultados->idAgrupacion = $item['idAgrupacion'];
+            $resultados->idEvaluacion = $item['idEvaluacion'];
+            $resultados->valor = isset($item['valorInput']) === true ? $item['valorInput'] : 'NOT FOUND';
+            $resultados->observacion = isset($item['valorObservacion']) === true ? $item['valorObservacion'] : 'NOT FOUND';
+            $resultados->save();
+
+        }
+
+
+        $idAsignacion = $request[0]['idAsignacion'];
+
+
+        Asignaciones::where('id', $idAsignacion)->update([
+            'estado' => 'revisado'
+        ]);
+
+
+        return response()->json();
     }
 }

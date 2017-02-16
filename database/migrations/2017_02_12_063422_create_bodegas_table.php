@@ -15,11 +15,11 @@ class CreateBodegasTable extends Migration
     {
         Schema::create('bodegas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('licitacion');
-            $table->string('nombreProveedor');
-            $table->string('region');
-            $table->string('comuna');
-            $table->string('DireccionBodega');
+            $table->longText('licitacion');
+            $table->longText('nombreProveedor');
+            $table->longText('region');
+            $table->longText('comuna');
+            $table->longText('DireccionBodega');
             $table->timestamps();
         });
     }

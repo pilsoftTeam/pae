@@ -14,19 +14,17 @@
                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                         <h4 class="text-center">Informacion de la bodega</h4>
                                         <hr>
-                                        <div v-for="bodega in item.get_bodega_info">
-                                            <p>Direccion : <b>{{bodega.DireccionBodega}}</b></p>
-                                            <p>Comuna : <b>{{bodega.comuna}}</b></p>
-                                            <p>Region : <b>{{bodega.region}}</b></p>
-                                        </div>
+                                        <p>Direccion : <b>{{item.get_bodega_info.DireccionBodega}}</b></p>
+                                        <p>Comuna : <b>{{item.get_bodega_info.comuna}}</b></p>
+                                        <p>Region : <b>{{item.get_bodega_info.region}}</b></p>
+
                                     </div>
                                     <div class="col-xs-18 col-sm-6 col-md-6 col-lg-6">
                                         <h4 class="text-center">Informacion Sobre checklist</h4>
                                         <hr>
-                                        <span v-for="name in item.get_checklist_name">
-                                        <p>Checklist : <b>{{name.nombreChecklist}}</b></p>
-                                        <p>Asignado el :<b>{{name.created_at}}</b></p>
-                                    </span>
+
+                                        <p>Checklist : <b>{{item.get_checklist_name.nombreChecklist}}</b></p>
+                                        <p>Asignado el :<b>{{item.get_checklist_name.created_at}}</b></p>
                                     </div>
                                 </div>
                                 <hr>
@@ -64,6 +62,9 @@
         methods: {
             getAsignaciones(){
                 axios.get('api/get/asignaciones').then(r => {
+
+                    console.log(r.data);
+
                     this.asignaciones = r.data
                 }).catch(e => {
                     console.log(e)
@@ -73,7 +74,8 @@
             startRevision(item){
                 this.selectedAsignacion = item;
                 this.init = false;
-            }
+            },
+
 
         },
         computed: {},

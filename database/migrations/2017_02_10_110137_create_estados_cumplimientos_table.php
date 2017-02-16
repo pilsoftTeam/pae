@@ -15,8 +15,8 @@ class CreateEstadosCumplimientosTable extends Migration
     {
         Schema::create('estados_cumplimientos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombreCumplimiento');
-            $table->string('contenido');
+            $table->longText('nombreCumplimiento');
+            $table->longText('contenido');
             $table->timestamps();
         });
     }

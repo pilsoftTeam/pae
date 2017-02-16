@@ -10,11 +10,21 @@ class Asignaciones extends Model
 
     public function getChecklistName()
     {
-        return $this->hasMany('App\Checklist', 'id', 'idChecklist');
+        return $this->hasOne('App\Checklist', 'id', 'idChecklist');
     }
 
     public function getBodegaInfo()
     {
-        return $this->hasMany('App\Bodegas', 'id', 'idBodega');
+        return $this->hasOne('App\Bodegas', 'id', 'idBodega');
+    }
+
+    public function getRevisor()
+    {
+        return $this->hasOne('App\User', 'id', 'idRevisor');
+    }
+
+    public function getSuper()
+    {
+        return $this->hasOne('App\User', 'id', 'idDesignador');
     }
 }

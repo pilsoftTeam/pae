@@ -17,6 +17,7 @@ class RevisorController extends Controller
     public function index()
     {
         $asignaciones = Asignaciones::where('idRevisor', Auth::user()->id)
+            ->where('estado', '=', 'asignado')
             ->with('getChecklistName', 'getBodegaInfo')->get();
         return response()->json($asignaciones, 200);
     }

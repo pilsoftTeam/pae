@@ -21,8 +21,7 @@
                 <estado></estado>
             </div>
             <div class="tab-pane fade" id="tab3">
-                <h2>Tab3</h2>
-                <p>Lorem ipsum.</p>
+
             </div>
         </div>
 

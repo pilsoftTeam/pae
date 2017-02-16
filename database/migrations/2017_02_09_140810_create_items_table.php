@@ -17,7 +17,7 @@ class CreateItemsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('idChecklist');
             $table->foreign('idChecklist')->references('id')->on('checklists');
-            $table->string('nombreItem');
+            $table->longText('nombreItem');
             $table->timestamps();
         });
     }

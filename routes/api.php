@@ -49,8 +49,12 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     //Bodegas
     Route::get('/bodegas/all', 'BodegasController@index');
+
     //supervisor
     Route::post('/designar/checklist', 'SupervisorController@create');
+    Route::get('/get/estados/checklists', 'SupervisorController@getState');
+    Route::get('/get/asignacion/{id}', 'SupervisorController@getAsignacion');
+    Route::get('/get/estados/get/checklist/{id}', 'SupervisorController@getChecklist');
     //Revisor
     Route::get('/get/asignaciones', 'RevisorController@index');
 

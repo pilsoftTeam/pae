@@ -13,4 +13,9 @@ class Evaluaciones extends Model
     {
         return $this->hasMany('App\EstadosCumplimiento', 'id', 'idOpcionCumplimiento');
     }
+
+    public function getRespuestas()
+    {
+        return $this->hasOne('App\Resultados', 'idEvaluacion', 'id');
+    }
 }

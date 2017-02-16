@@ -13,5 +13,10 @@ class Checklist extends Model
         return $this->hasMany('App\Items', 'idChecklist', 'id')->with('getEvaluaciones', 'getAgrupaciones');
     }
 
+    public function getItemsWithRespuestas()
+    {
+        return $this->hasMany('App\Items', 'idChecklist', 'id')->with('getEvaluacionesWithRespuestas', 'getAgrupacionesWithRespuestas');
+    }
+
 
 }

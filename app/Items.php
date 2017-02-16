@@ -22,4 +22,13 @@ class Items extends Model
     {
         return $this->hasMany('App\Etapas', 'idItem', 'id')->with('getEvaluaciones');
     }
+    public function getEvaluacionesWithRespuestas()
+    {
+        return $this->hasMany('App\Evaluaciones', 'idItem', 'id')->where('idEtapa', '=', null)->with('getOpciones', 'getRespuestas');
+    }
+
+    public function getAgrupacionesWithRespuestas()
+    {
+        return $this->hasMany('App\Etapas', 'idItem', 'id')->with('getEvaluaciones');
+    }
 }
